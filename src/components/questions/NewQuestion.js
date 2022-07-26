@@ -10,8 +10,8 @@ import introIcon from '../../assets/types/intro.svg'
 import thanksIcon from '../../assets/types/thanks.svg'
 
 function NewQuestion(props) {
-    const { index, crud } = props
-    const update = crud.update
+    const { index, CRUD } = props
+    const { updateQuestion } = CRUD
 
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-3 pt-2 pb-1">
@@ -31,7 +31,7 @@ function NewQuestion(props) {
             {/* Question options */}
             <div className="grid grid-cols-4-md grid-cols-2 u-gap-2 p-1">
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => update(index, 'type', 'intro')}>
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'intro')}>
                     <font className="text-xs u-absolute-md font-bold">Intro</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Greet the user with style"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <img className="pt-0-md" src={introIcon} alt="Single" />
@@ -39,7 +39,7 @@ function NewQuestion(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => update(index, 'type', 'single')}>
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'single')}>
                     <font className="text-xs u-absolute-md font-bold">Single choice</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="The user must choose one option only"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <img className="pt-1-md" src={singleIcon} alt="Single" />
@@ -47,7 +47,7 @@ function NewQuestion(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => update(index, 'type', 'multiple')}>
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'multiple')}>
                     <font className="text-xs u-absolute-md font-bold">Multiple choice</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="The user can choose multiple options"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <img className="pt-1-md" src={multipleIcon} alt="Single" />
@@ -55,7 +55,7 @@ function NewQuestion(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => update(index, 'type', 'open')}>
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'open')}>
                     <font className="text-xs u-absolute-md font-bold">Open answer</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="A single line, a paragraph, date, email, number, etc."><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <img className="pt-1-md" src={openIcon} alt="Single" />
@@ -63,7 +63,7 @@ function NewQuestion(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => update(index, 'type', 'rating')}>
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'rating')}>
                     <font className="text-xs u-absolute-md font-bold">Rating</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Up to 5 stars!"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <img className="pt-1-md" src={ratingIcon} alt="Single" />
@@ -71,7 +71,7 @@ function NewQuestion(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => update(index, 'type', 'ranking')}>
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'ranking')}>
                     <font className="text-xs u-absolute-md font-bold">Ranking</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Let the user rank some options"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <img className="pt-1-md" src={rankingIcon} alt="Single" />
@@ -79,7 +79,7 @@ function NewQuestion(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => update(index, 'type', 'list')}>
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'list')}>
                     <font className="text-xs u-absolute-md font-bold">List</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Ask the user for a list"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <img className="pt-1-md" src={listIcon} alt="Single" />
@@ -87,7 +87,7 @@ function NewQuestion(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => update(index, 'type', 'thanks')}>
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'thanks')}>
                     <font className="text-xs u-absolute-md font-bold">Thank you</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="It's always nice to say thanks"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <img className="pt-1-md" src={thanksIcon} alt="Single" />

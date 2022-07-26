@@ -2,9 +2,9 @@
   outline: 1px solid green;
 } */
 
-html {
+/* html {
   overflow-y: scroll;
-}
+} */
 
 .react-link {
   font-weight: normal !important;
@@ -97,6 +97,11 @@ main {
 
 .pointer {
   cursor: pointer;
+}
+
+.click-area {
+  cursor: pointer;
+  display: inline-block;
 }
 
 @media only screen and (max-width: 769px) {

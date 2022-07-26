@@ -1,8 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquarePollHorizontal, faEye, faPersonChalkboard } from '@fortawesome/free-solid-svg-icons'
+import { faSquarePollHorizontal, faEye, faPersonChalkboard, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
+import { getAllPollsService } from '../services/polls.services.js'
+import { useState, useEffect } from 'react'
 
 function Dashboard() {
+  const [polls, setPolls] = useState([])
+
+  const getAllPolls = async () => {
+    const response = await getAllPollsService()
+    setPolls(response.data)
+  }
+
+  useEffect(() => {
+    getAllPolls()
+  }, [])
+
   return (
     <>
       {/* DASHBOARD HEADER */}
@@ -56,37 +69,26 @@ function Dashboard() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>Poll#1</th>
-              <td>Published</td>
-              <td>23/04/2022</td>
-              <td>2</td>
-              <td>63</td>
-              <td>41</td>
-              <td>81%</td>
-            </tr>
-            <tr>
-              <th>Poll#2</th>
-              <td>Unpublished</td>
-              <td>01/05/2022</td>
-              <td>6</td>
-              <td>127</td>
-              <td>98</td>
-              <td>78%</td>
-            </tr>
-            <tr>
-              <th>Poll#3</th>
-              <td>Closed</td>
-              <td>24/06/2022</td>
-              <td>1</td>
-              <td>15</td>
-              <td>2</td>
-              <td>12%</td>
-            </tr>
+            {polls.map((poll, index) => {
+              return (
+                <tr key={index}>
+                  <th><Link to={`/poll/${poll._id}`}>{poll.title}</Link></th>
+                  <td>{poll.isPublished}</td>
+                  <td>{poll.createdAt}</td>
+                  <td>{poll.questions.length}</td>
+                  <td>63</td>
+                  <td>41</td>
+                  <td>81%</td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
-
-
+        {polls.length ? <></> : (
+          <div class="toast toast--gray mx-auto">
+            <div className="u-text-center"><FontAwesomeIcon icon={faInfoCircle} /> No polls available</div>
+          </div>
+        )}
       </div>
     </>
   );
