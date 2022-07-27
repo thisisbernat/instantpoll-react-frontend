@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react'
 import { AuthContext } from "../context/auth.context"
-import { addNewPollService } from '../services/polls.services.js'
+import { addNewPollService, updatePatchPollService } from '../services/polls.services.js'
 import { addNewQuestionService } from '../services/questions.services.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Swal from 'sweetalert2'
 import { faFloppyDisk, faPen, faPaperPlane, faGears } from '@fortawesome/free-solid-svg-icons'
+import Swal from 'sweetalert2'
 
 
 import NewQuestion from '../components/questions/NewQuestion'
@@ -61,14 +61,15 @@ function NewPoll() {
     isCompulsory: false
   }
 
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([])
   const [pollTitle, setPollTitle] = useState('')
-  const [showPen, setShowPen] = useState(false);
+  const [showPen, setShowPen] = useState(false)
 
   const createQuestion = (newQuestion) => {
     if (questions.length > 0) {
       const lastQ = questions.slice(-1)[0]
       if (!lastQ.isSaved) {
+        Swal.fire('Save the last question before adding another one')
         return
       }
     }
@@ -140,48 +141,84 @@ function NewPoll() {
       .catch(err => console.log(err))
   }
 
-  const pollOptions = () => {
+  const pollOptionsMenu = () => {
     Swal.fire('Poll options')
   }
 
-  const savePoll = async () => {
+  const savePoll = async (isPublished) => {
+    if (pollTitle === '') {
+      Swal.fire('You must provide a poll title')
+      return
+    }
+    if (questions.length === 0) {
+      Swal.fire('You must save at least one question')
+      return
+    } else if (questions.length > 0 && questions.at(-1).isSaved === false) {
+      Swal.fire('You must save at least one question')
+      return
+    }
+
+    if(isPublished) {
+      let confAlert = {
+        text: 'Are you sure you want to publish the poll?',
+        icon: 'warning',
+        cancelButtonText: `No`,
+        confirmButtonText: `Yes`,
+        showCancelButton: true,
+        showCloseButton: true,
+        customClass: {
+          cancelButton: 'btn-dark btn--sm',
+          confirmButton: 'bg-teal-600 text-white btn--sm'
+        }
+      }
+      const publicationConfirm = await Swal.fire(confAlert)
+      if (!publicationConfirm.isConfirmed) {
+        return
+      }
+    }
+
     const newPoll = {
       title: pollTitle,
       isPublic: true,
-      isPublished: false,
+      isPublished: isPublished,
       submissions: 0,
       views: 0,
       owner: user._id
     }
 
+    const questionIds = []
+    let savedPollId = null
+
     try {
       const savedPoll = await addNewPollService(newPoll)
-      const savedPollId = savedPoll.data._id
+      savedPollId = savedPoll.data._id
 
-      questions.forEach((question, index) => {
+      for (const [index, question] of questions.entries()) {
         delete question.isSaved
-        question.parentPoll = savedPollId
         question.position = index
-        addNewQuestionService(question)
-        .then(response => console.log(response))
-        .catch(err => console.log(err))
-      })
+        question.parentPoll = savedPollId
+        const savedQuestion = await addNewQuestionService(question)
+        const savedQuestionId = savedQuestion.data._id
+        questionIds.push(savedQuestionId)
+      }
+
+      await updatePatchPollService(savedPollId, { questions: questionIds })
+
     }
     catch (err) { console.log(err) }
 
-    Swal.fire('Poll saved!')
-    .then(response => {
-      if (response.isConfirmed) {
+    if(isPublished) {
+      const value = await Swal.fire('The poll has been published')
+      if (value.isConfirmed) {
+        window.location.replace(`/poll/${savedPollId}`)
+      }
+    } else if (!isPublished) {
+      const value = await Swal.fire('The poll has been saved')
+      if (value.isConfirmed) {
         window.location.replace("/dashboard")
       }
-    })
-    .catch(err => console.log(err))
+    }
   }
-
-  const publishPoll = () => {
-    Swal.fire('Publish poll')
-  }
-
 
   return (
     <>
@@ -189,13 +226,13 @@ function NewPoll() {
       <div className="u-flex u-flex-wrap u-justify-space-between-md u-items-center u-justify-center">
         <h4 className="font-alt text-yellow-400">
           <div onClick={() => saveTitle()} onMouseEnter={() => setShowPen(true)} onMouseLeave={() => setShowPen(false)} className="click-area">
-            {pollTitle ? pollTitle : 'Enter your poll title here! ⌨️'} {<FontAwesomeIcon className={showPen ? "text-gray-600 text-lg" : "text-gray-600 text-sm hidden"} icon={faPen} />}
+            {pollTitle ? pollTitle : 'Enter your poll title here!'} {<FontAwesomeIcon className={showPen ? "text-gray-600 text-lg" : "text-gray-600 text-sm hidden"} icon={faPen} />}
           </div>
         </h4>
         <div className="u-flex u-gap-1">
-          <button onClick={pollOptions} className="outline text-indigo-800 btn--sm">Poll options <FontAwesomeIcon icon={faGears} /></button>
-          <button onClick={savePoll} className="outline text-indigo-800 btn--sm">Save <FontAwesomeIcon icon={faFloppyDisk} /></button>
-          <button onClick={publishPoll} className="bg-indigo-800 text-white btn--sm">Publish poll <FontAwesomeIcon icon={faPaperPlane} /></button>
+          <button onClick={pollOptionsMenu} className="outline text-indigo-800 btn--sm">Poll options <FontAwesomeIcon icon={faGears} /></button>
+          <button onClick={() => savePoll(false)} className="outline text-indigo-800 btn--sm">Save <FontAwesomeIcon icon={faFloppyDisk} /></button>
+          <button onClick={() => savePoll(true)} className="bg-indigo-800 text-white btn--sm">Publish poll <FontAwesomeIcon icon={faPaperPlane} /></button>
         </div>
       </div>
       {/***************/}

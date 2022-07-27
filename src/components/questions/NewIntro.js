@@ -21,7 +21,6 @@ function NewIntro(props) {
 
     const saveQuestion = (e) => {
         e.preventDefault()
-        console.log(e)
         updateQuestion(index, 'title', title)
         updateQuestion(index, 'message', message)
         updateQuestion(index, 'buttonText', buttonText)

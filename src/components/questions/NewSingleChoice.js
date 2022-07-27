@@ -37,6 +37,16 @@ function NewSigleChoice(props) {
     const saveQuestion = (e) => {
         e.preventDefault()
         const optionsCopy = options.filter(option => option !== '')
+
+        if (title === '') {
+            Swal.fire('Must provide a title')
+            return
+        }
+        if (optionsCopy.length < 2) {
+            Swal.fire('Must provide at least two valid options')
+            return
+        }
+        
         updateQuestion(index, 'options', optionsCopy)
         updateQuestion(index, 'title', title)
         updateQuestion(index, 'isCompulsory', isCompulsory)
@@ -87,7 +97,7 @@ function NewSigleChoice(props) {
             </div>
             <div className="u-text-break font-alt font-bold py-1 text-yellow-400 u-text-center" style={{ lineHeight: "1.2rem" }}>
                 <div onClick={() => saveTitle()} onMouseEnter={() => setShowPen(true)} onMouseLeave={() => setShowPen(false)} className="click-area">
-                    {title ? `${title}${isCompulsory && '*'}` : <>Edit your title here! {isCompulsory && '*'}</>} {<FontAwesomeIcon className={showPen ? "text-gray-600 text-sm" : "text-gray-600 text-sm hidden"} icon={faPen} />}
+                    {title ? `${title}${isCompulsory ? '*' : ''}` : <>Edit your title here! {isCompulsory && '*'}</>} {<FontAwesomeIcon className={showPen ? "text-gray-600 text-sm" : "text-gray-600 text-sm hidden"} icon={faPen} />}
                 </div>
             </div>
             {/* Question header */}

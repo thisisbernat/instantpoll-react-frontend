@@ -3,8 +3,8 @@ import service from './service'
 const URL = '/questions'
 
 // GET ALL QUESTIONS
-const getAllQuestionsService = () => {
-	return service.get(`${URL}/`)
+const getAllQuestionsService = (pollId) => {
+	return service.get(`${URL}/${pollId}`)
 }
 
 // GET ONE QUESTION

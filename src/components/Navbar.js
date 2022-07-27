@@ -1,19 +1,13 @@
 import SymbolDark from '../assets/img/symbolDark.svg'
-import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import { useState, useContext } from "react"
+import { Link } from "react-router-dom"
+import { AuthContext } from "../context/auth.context"
 
 
 function Navbar(props) {
-    // Subscribe to the AuthContext to gain access to
-    // the values from AuthContext.Provider `value` prop
-    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-
-
-    // Control the hamburguer and dropdown menu
-    const [isMenuOpen, setMenuOpen] = useState("false");
-    const [isDropdownOpen, setDropdownOpen] = useState("false");
-
+    const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+    const [isMenuOpen, setMenuOpen] = useState("false")
+    const [isDropdownOpen, setDropdownOpen] = useState("false")
 
     return (
         <header className="header header-fixed u-unselectable header-animated">

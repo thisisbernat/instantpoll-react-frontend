@@ -37,7 +37,7 @@ function NewSigleChoice(props) {
             {/* Question body */}
             <div className="p-1 px-10-md u-text-center mt-3">
                 <div className="mx-24-md p-4 u-round-sm u-shadow-md u-text-center" style={{ border: "solid 1px lightgrey" }}>
-                    <h4>{title}<font className="text-red-700">{isCompulsory && '*'}</font></h4>
+                    <h4>{title}<font className="text-red-700">{isCompulsory ? '*' : ''}</font></h4>
                     <div className="u-text-left" style={{ display: "inline-block" }}>
                         {options.map((option, index) => {
                             return <div><FontAwesomeIcon className="text-teal-600" icon={faCircleDot} key={index}/> {option}</div>
