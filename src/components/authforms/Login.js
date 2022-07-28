@@ -1,36 +1,36 @@
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context";
+import { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
+import { AuthContext } from "../../context/auth.context"
 import { loginService } from "../../services/auth.services"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 
 function Login(props) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState(undefined);
-    const navigate = useNavigate();
-    const { logInUser } = useContext(AuthContext);
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState(undefined)
+    const navigate = useNavigate()
+    const { logInUser } = useContext(AuthContext)
 
-    const handleEmail = (e) => setEmail(e.target.value);
-    const handlePassword = (e) => setPassword(e.target.value);
+    const handleEmail = (e) => setEmail(e.target.value)
+    const handlePassword = (e) => setPassword(e.target.value)
 
     const handleLoginSubmit = async (e) => {
-        e.preventDefault();
-        const requestBody = { email, password };
+        e.preventDefault()
+        const requestBody = { email, password }
 
         try {
-            const response = await loginService(requestBody);
+            const response = await loginService(requestBody)
 
-            const token = response.data.authToken;
-            logInUser(token);
-            navigate("/");
+            const token = response.data.authToken
+            logInUser(token)
+            navigate("/")
         } catch (err) {
-            const errorDescription = err?.response?.data?.message;
-            setErrorMessage(errorDescription);
+            const errorDescription = err?.response?.data?.message
+            setErrorMessage(errorDescription)
         }
-    };
+    }
 
     return (
         <div className="pt-3 pb-8 u-center">
@@ -51,4 +51,4 @@ function Login(props) {
     )
 }
 
-export default Login;
+export default Login

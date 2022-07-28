@@ -64,9 +64,9 @@ function Vote() {
       .then(response => {
         const sortedQuestions = response.data.sort((a, b) => {
           if (a.position > b.position) {
-            return 1;
+            return 1
           } else if (a.position < b.position) {
-            return -1;
+            return -1
           }
           return 0
         })
@@ -109,7 +109,7 @@ function Vote() {
       <Share />
 
     </div>
-  );
+  )
 }
 
-export default Vote;
+export default Vote

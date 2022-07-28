@@ -38,4 +38,4 @@ function VoteSingleChoice(props) {
     )
 }
 
-export default VoteSingleChoice;
+export default VoteSingleChoice

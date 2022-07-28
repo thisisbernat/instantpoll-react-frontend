@@ -100,7 +100,7 @@ function NewQuestion(props) {
     )
 }
 
-export default NewQuestion;
+export default NewQuestion
 
 
 

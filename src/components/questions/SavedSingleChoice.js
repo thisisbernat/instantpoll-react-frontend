@@ -52,4 +52,4 @@ function NewSigleChoice(props) {
     )
 }
 
-export default NewSigleChoice;
+export default NewSigleChoice

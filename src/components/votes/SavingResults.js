@@ -14,4 +14,4 @@ function SavingResults(props) {
     )
 }
 
-export default SavingResults;
+export default SavingResults

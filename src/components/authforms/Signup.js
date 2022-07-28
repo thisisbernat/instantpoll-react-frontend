@@ -1,40 +1,40 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { signupService } from '../../services/auth.services';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { signupService } from '../../services/auth.services'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock, faUser, faAddressCard } from '@fortawesome/free-solid-svg-icons'
 
 
 function Signup(props) {
-    const [firstname, setFirstName] = useState('');
-    const [lastname, setLastName] = useState('');
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [firstname, setFirstName] = useState('')
+    const [lastname, setLastName] = useState('')
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    const navigate = useNavigate();
-    const [errorMessage, setErrorMessage] = useState(undefined);
+    const navigate = useNavigate()
+    const [errorMessage, setErrorMessage] = useState(undefined)
 
-    const handleEmail = (e) => setEmail(e.target.value);
-    const handlePassword = (e) => setPassword(e.target.value);
-    const handleFirstName = (e) => setFirstName(e.target.value);
-    const handleLastName = (e) => setLastName(e.target.value);
-    const handleUsername = (e) => setUsername(e.target.value);
+    const handleEmail = (e) => setEmail(e.target.value)
+    const handlePassword = (e) => setPassword(e.target.value)
+    const handleFirstName = (e) => setFirstName(e.target.value)
+    const handleLastName = (e) => setLastName(e.target.value)
+    const handleUsername = (e) => setUsername(e.target.value)
 
     const handleSignupSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         // Create an object representing the request body
-        const requestBody = { email, password, firstname, lastname, username };
+        const requestBody = { email, password, firstname, lastname, username }
         try {
-            await signupService(requestBody);
-            navigate("/login");
+            await signupService(requestBody)
+            navigate("/login")
         } catch (err) {
             if (err.response?.status === 400) {
-                setErrorMessage(err.response.data.errorMessage);
-                console.log(errorMessage);
+                setErrorMessage(err.response.data.errorMessage)
+                console.log(errorMessage)
             }
         }
-    };
+    }
 
     return (
         <div className="pt-3 pb-8 u-center">
@@ -72,4 +72,4 @@ function Signup(props) {
     )
 }
 
-export default Signup;
+export default Signup

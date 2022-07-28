@@ -24,4 +24,4 @@ function NewRating(props) {
     )
 }
 
-export default NewRating;
+export default NewRating

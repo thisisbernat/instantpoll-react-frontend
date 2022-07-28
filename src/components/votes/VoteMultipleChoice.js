@@ -14,4 +14,4 @@ function VoteMultipleChoice(props) {
     )
 }
 
-export default VoteMultipleChoice;
+export default VoteMultipleChoice

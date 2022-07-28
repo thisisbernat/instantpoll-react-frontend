@@ -6,4 +6,4 @@ function AppContainer(props) {
 	)
 }
 
-export default AppContainer;
+export default AppContainer

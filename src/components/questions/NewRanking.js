@@ -31,4 +31,4 @@ function NewRanking(props) {
     )
 }
 
-export default NewRanking;
+export default NewRanking

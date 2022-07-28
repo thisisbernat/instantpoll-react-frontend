@@ -11,13 +11,13 @@ function NewIntro(props) {
     const savedButtonText = question.buttonText
     const { updateQuestion, deleteQuestion } = CRUD
 
-    const [title, setTitle] = useState(savedTitle);
-    const [showPen, setShowPen] = useState(false);
-    const [message, setMessage] = useState(savedMessage);
-    const [buttonText, setButtonText] = useState(savedButtonText);
+    const [title, setTitle] = useState(savedTitle)
+    const [showPen, setShowPen] = useState(false)
+    const [message, setMessage] = useState(savedMessage)
+    const [buttonText, setButtonText] = useState(savedButtonText)
     
-    const handleMessage = (e) => setMessage(e.target.value);
-    const handleButtonText = (e) => setButtonText(e.target.value);
+    const handleMessage = (e) => setMessage(e.target.value)
+    const handleButtonText = (e) => setButtonText(e.target.value)
 
     const saveQuestion = (e) => {
         e.preventDefault()
@@ -91,4 +91,4 @@ function NewIntro(props) {
     )
 }
 
-export default NewIntro;
+export default NewIntro

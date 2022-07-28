@@ -10,4 +10,4 @@ function VoteOpenEmail(props) {
     )
 }
 
-export default VoteOpenEmail;
+export default VoteOpenEmail

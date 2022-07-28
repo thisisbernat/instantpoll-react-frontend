@@ -34,4 +34,4 @@ function NewThanks(props) {
     )
 }
 
-export default NewThanks;
+export default NewThanks

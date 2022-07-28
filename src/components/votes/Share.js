@@ -32,4 +32,4 @@ function Share(props) {
 
 }
 
-export default Share;
+export default Share

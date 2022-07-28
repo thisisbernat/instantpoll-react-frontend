@@ -31,4 +31,4 @@ function NewMultipleChoice(props) {
 	)
 }
 
-export default NewMultipleChoice;
+export default NewMultipleChoice

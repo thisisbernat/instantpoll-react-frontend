@@ -79,4 +79,4 @@ function NewOpen(props) {
     )
 }
 
-export default NewOpen;
+export default NewOpen

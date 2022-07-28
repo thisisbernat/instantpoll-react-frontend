@@ -1,25 +1,25 @@
-import service from "./service";
+import service from "./service"
 
-const URL = "/projects";
+const URL = "/projects"
 
 const getAllProjectsService = () => {
-  return service.get(`${URL}/`);
-};
+  return service.get(`${URL}/`)
+}
 const getProjectDetailsService = (id) => {
-  return service.get(`${URL}/${id}`);
-};
+  return service.get(`${URL}/${id}`)
+}
 
 const addNewProjectService = (newProject) => {
-  return service.post(`${URL}/`, newProject);
-};
+  return service.post(`${URL}/`, newProject)
+}
 
 const editProjectPageService = (projectId) => {
-  return service.get(`${URL}/${projectId}`);
-};
+  return service.get(`${URL}/${projectId}`)
+}
 
 export {
   getAllProjectsService,
   addNewProjectService,
   getProjectDetailsService,
   editProjectPageService,
-};
+}

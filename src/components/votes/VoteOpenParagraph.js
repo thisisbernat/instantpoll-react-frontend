@@ -10,4 +10,4 @@ function VoteOpenParagraph(props) {
     )
 }
 
-export default VoteOpenParagraph;
+export default VoteOpenParagraph

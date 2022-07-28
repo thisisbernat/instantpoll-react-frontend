@@ -10,4 +10,4 @@ function VoteOpenPhone(props) {
     )
 }
 
-export default VoteOpenPhone;
+export default VoteOpenPhone

@@ -253,7 +253,7 @@ function NewPoll() {
       <AddQuestion createQuestion={createQuestion} newQuestion={newQuestion} />
 
     </>
-  );
+  )
 }
 
-export default NewPoll;
+export default NewPoll

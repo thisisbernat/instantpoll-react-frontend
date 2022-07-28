@@ -6,4 +6,4 @@ function MainContainer(props) {
 	)
 }
 
-export default MainContainer;
+export default MainContainer

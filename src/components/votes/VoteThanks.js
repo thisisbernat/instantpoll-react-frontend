@@ -12,4 +12,4 @@ function VoteList(props) {
 	)
 }
 
-export default VoteList;
+export default VoteList

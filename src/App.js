@@ -1,6 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-
-/*** Components ***/
 import AppContainer from './components/containers/AppC'
 import MainContainer from './components/containers/MainC'
 import PageContainer from './components/containers/PageC'
@@ -14,8 +12,6 @@ import Dashboard from './pages/Dashboard'
 import Vote from './pages/Vote'
 import PrivateRoute from './components/PrivateRoute'
 import AnonRoute from './components/AnonRoute'
-/******************/
-
 
 function App() {
 	return (
@@ -69,7 +65,7 @@ function App() {
 			</MainContainer>
 			<Footer />
 		</AppContainer>
-	);
+	)
 }
 
-export default App;
+export default App

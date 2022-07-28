@@ -26,4 +26,4 @@ function NewList(props) {
     )
 }
 
-export default NewList;
+export default NewList

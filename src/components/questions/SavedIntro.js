@@ -42,4 +42,4 @@ function NewIntro(props) {
     )
 }
 
-export default NewIntro;
+export default NewIntro

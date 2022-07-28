@@ -10,4 +10,4 @@ function VoteOpenDate(props) {
     )
 }
 
-export default VoteOpenDate;
+export default VoteOpenDate

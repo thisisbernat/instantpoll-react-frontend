@@ -24,7 +24,7 @@ function Dashboard() {
       .then(response => {
         setPolls(response.data)
         const total = response.data.reduce((acc, obj) => { 
-          return acc + obj.submissions; 
+          return acc + obj.submissions 
         }, 0)
         setTotalSubmissions(total)
       })
@@ -186,7 +186,7 @@ function Dashboard() {
         )}
       </div>
     </>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard

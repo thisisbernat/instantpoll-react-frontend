@@ -14,4 +14,4 @@ function AddQuestion(props) {
     )
 }
 
-export default AddQuestion;
+export default AddQuestion

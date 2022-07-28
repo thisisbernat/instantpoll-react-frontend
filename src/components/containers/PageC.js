@@ -8,4 +8,4 @@ function PageContainer(props) {
     )
 }
 
-export default PageContainer;
+export default PageContainer

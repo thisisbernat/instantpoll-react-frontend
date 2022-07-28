@@ -11,4 +11,4 @@ function VoteIntro(props) {
   )
 }
 
-export default VoteIntro;
+export default VoteIntro

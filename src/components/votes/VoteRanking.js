@@ -13,4 +13,4 @@ function VoteRanking(props) {
     )
 }
 
-export default VoteRanking;
+export default VoteRanking

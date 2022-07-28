@@ -10,4 +10,4 @@ function VoteOpenNumber(props) {
     )
 }
 
-export default VoteOpenNumber;
+export default VoteOpenNumber
