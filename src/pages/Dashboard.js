@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquarePollHorizontal, faEye, faPersonChalkboard, faInfoCircle, faTrashCan, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faSquarePollHorizontal, faEye, faPersonChalkboard, faInfoCircle, faTrashCan, faPaperPlane,faUpRightFromSquare, faDoorClosed } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
 import { getAllPollsService, deletePollService, updatePatchPollService } from '../services/polls.services.js'
 import { useState, useEffect, useContext } from 'react'
@@ -11,6 +11,7 @@ function Dashboard() {
   const { user } = useContext(AuthContext)
   const [userId] = useState(user._id)
   const [polls, setPolls] = useState([])
+  const [totalSubmissions, setTotalSubmissions] = useState(0)
 
   const translateDate = (date) => {
     let yourDate = new Date(date)
@@ -22,6 +23,10 @@ function Dashboard() {
     getAllPollsService(userId)
       .then(response => {
         setPolls(response.data)
+        const total = response.data.reduce((acc, obj) => { 
+          return acc + obj.submissions; 
+        }, 0)
+        setTotalSubmissions(total)
       })
       .catch(err => console.log(err))
   }, [userId])
@@ -51,9 +56,35 @@ function Dashboard() {
       .catch(err => console.log(err))
   }
 
+  const closePoll = (pollId, index) => {
+    let confAlert = {
+      text: 'Are you sure you want to close the poll?',
+      icon: 'question',
+      cancelButtonText: `No`,
+      confirmButtonText: `Close`,
+      showCancelButton: true,
+      showCloseButton: true,
+      customClass: {
+        cancelButton: 'bg-teal-400 text-white btn--sm',
+        confirmButton: 'bg-red-700 text-white btn--sm'
+      }
+    }
+    Swal.fire(confAlert)
+      .then(response => {
+        if (response.isConfirmed) {
+          updatePatchPollService(pollId, { isPublished: false })
+          let pollsCopy = [...polls]
+          pollsCopy[index].isPublished = false
+          setPolls(pollsCopy)
+        }
+      })
+      .catch(err => console.log(err))
+  }
+
   const deletePoll = (pollId, index) => {
     let confAlert = {
-      text: 'Are you sure you want to delete the poll?',
+      title: 'Are you sure you want to delete the poll?',
+      text: 'This process is irreversible! All information related to this poll will be deleted',
       icon: 'warning',
       cancelButtonText: `No`,
       confirmButtonText: `Delete`,
@@ -97,7 +128,7 @@ function Dashboard() {
         </div>
         <div className="bg-white u-round-sm u-shadow-lg px-2 py-3 u-flex u-flex-column u-items-center u-gap-5">
           <div className="p-1 bg-yellow-400 text-gray-000 u-center circle"><FontAwesomeIcon icon={faPersonChalkboard} /></div>
-          <h1 className="my-0">3</h1>
+          <h1 className="my-0">{totalSubmissions}</h1>
           <h4 className="my-0">Submissions</h4>
         </div>
       </div>
@@ -120,28 +151,28 @@ function Dashboard() {
           <thead>
             <tr>
               <th>Name</th>
-              <th><abbr title="Published/Saved">Status</abbr></th>
-              <th><abbr title="Creation date">Date</abbr></th>
-              <th><abbr title="Number of questions">Questions</abbr></th>
+              <th><abbr title="Creation date">Creation</abbr></th>
+              <th><abbr title="Published/Saved">Status</abbr></th>  
+              <th><abbr title="Public/Private">Visibility</abbr></th>                      
               <th><abbr title="Number of views">Views</abbr></th>
               <th><abbr title="Submissions">Sub.</abbr></th>
               <th><abbr title="Submission rate">SR</abbr></th>
-              <th><abbr title="Publish">Pub</abbr></th>
-              <th><abbr title="Delete">Del</abbr></th>
+              <th>Actions</th>
+              <th>Del</th>
             </tr>
           </thead>
           <tbody>
             {polls.map((poll, index) => {
               return (
-                <tr key={index}>
-                  <th><Link to={`/poll/${poll._id}`}>{poll.title}</Link></th>
-                  <td>{poll.isPublished ? 'Published' : 'Saved'}</td>
+                <tr key={index}>                  
+                  <th><Link to={`/poll/${poll._id}`}>{poll.title} <FontAwesomeIcon icon={faUpRightFromSquare} /></Link></th>
                   <td>{translateDate(poll.createdAt)}</td>
-                  <td>{poll.questions.length}</td>
+                  <td>{poll.isPublished ? 'Published' : 'Closed'}</td>
+                  <td>{poll.isPublic ? 'Public' : 'Private'}</td>                  
                   <td>63</td>
-                  <td>41</td>
+                  <td>{poll.submissions}</td>
                   <td>81%</td>
-                  <td><button onClick={() => publishPoll(poll._id, index)} className="btn--sm outline btn-dark py-0" title="Publish poll"><FontAwesomeIcon icon={faPaperPlane} /></button></td>
+                  <td>{poll.isPublished ? <button onClick={() => closePoll(poll._id, index)} className="btn--sm outline text-gray-700 py-0" title="Close poll"><FontAwesomeIcon icon={faDoorClosed} /></button> : <button onClick={() => publishPoll(poll._id, index)} className="btn--sm outline btn-dark py-0" title="Publish poll"><FontAwesomeIcon icon={faPaperPlane} /></button>}</td>
                   <td><button onClick={() => deletePoll(poll._id, index)} className="btn--sm outline btn-primary py-0" title="Delete poll"><FontAwesomeIcon icon={faTrashCan} /></button></td>
                 </tr>
               )

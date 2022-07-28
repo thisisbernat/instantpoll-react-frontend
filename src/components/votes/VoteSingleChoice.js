@@ -1,28 +1,35 @@
 import { useState } from "react"
+import Swal from "sweetalert2"
 
 function VoteSingleChoice(props) {
-    const { question, next, saveAnswer } = props
+    const { question, nextStep, saveAnswer } = props
     const [answer, setAnswer] = useState(null)
 
-    const handleFormChange = (index, event) => {
-        setAnswer(event.target.value)
+    const handleFormChange = (e) => {
+        setAnswer(e.target.value)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        next()
-        console.log(answer)
-        console.log(e.target)
-        
+        if (question.isCompulsory && !answer) {
+            Swal.fire('Answering to this question is compulsory')
+            return
+        }
+        if (answer) {
+            saveAnswer({ 'choices': answer })
+            setAnswer(null)
+        } else if (!answer) {
+            nextStep()
+        }
     }
 
     return (
         <form onSubmit={handleSubmit} className="bg-white u-round-sm u-shadow-lg px-2 py-3 grid-c-4-md">
-            <h4 className="u-text-center">{question.title}</h4>
+            <h4 className="u-text-center">{question.title}<font className="text-red-700">{question.isCompulsory ? '*' : ''}</font></h4>
             <div className="text-lg u-center mb-1">
                 <ul className="no-bullets">
                     {question.options.map((option, optionIndex) => {
-                        return <li key={optionIndex}><label className="pointer"><input type="radio" name="option" value={option} onChange={event => handleFormChange(optionIndex, event)}/> {option}</label></li>
+                        return <li key={`${option}-${optionIndex}`}><label className="pointer"><input type="radio" name="option" value={option} onChange={e => handleFormChange(e)} /> {option}</label></li>
                     })}
                 </ul>
             </div>

@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react'
+import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/auth.context"
 import { addNewPollService, updatePatchPollService } from '../services/polls.services.js'
 import { addNewQuestionService } from '../services/questions.services.js'
@@ -52,6 +53,7 @@ const SavedQuestionsMap = {
 
 function NewPoll() {
   const { user } = useContext(AuthContext)
+  let navigate = useNavigate()
 
   const newQuestion = {
     title: '',
@@ -210,12 +212,12 @@ function NewPoll() {
     if(isPublished) {
       const value = await Swal.fire('The poll has been published')
       if (value.isConfirmed) {
-        window.location.replace(`/poll/${savedPollId}`)
+        navigate(`/poll/${savedPollId}`)
       }
     } else if (!isPublished) {
       const value = await Swal.fire('The poll has been saved')
       if (value.isConfirmed) {
-        window.location.replace("/dashboard")
+        navigate("/dashboard")
       }
     }
   }

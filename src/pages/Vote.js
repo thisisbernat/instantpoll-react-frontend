@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { AuthContext } from "../context/auth.context"
+import { useParams, useNavigate } from 'react-router-dom'
+// import { AuthContext } from "../context/auth.context"
 import { addNewAnswerService } from '../services/answers.services.js'
 import { getAllQuestionsService } from '../services/questions.services.js'
+import { updatePatchPollService } from '../services/polls.services.js'
+import Swal from 'sweetalert2'
 
 import VoteList from '../components/votes/VoteList'
 import VoteIntro from '../components/votes/VoteIntro'
@@ -18,6 +20,7 @@ import VoteRanking from '../components/votes/VoteRanking'
 import VoteRating from '../components/votes/VoteRating'
 import VoteSingleChoice from '../components/votes/VoteSingleChoice'
 import Share from '../components/votes/Share'
+
 
 const VoteQuestionsMap = {
   intro: VoteIntro,
@@ -38,6 +41,7 @@ const VoteQuestionsMap = {
 function Vote() {
   const { id } = useParams()
   const [pollId] = useState(id)
+  let navigate = useNavigate()
 
   const sampleQuestion = {
     title: 'Sample title',
@@ -66,21 +70,35 @@ function Vote() {
       .catch(err => console.log(err))
   }, [pollId])
 
-  const next = () => {
-    setCurrentIndex(currentIndex + 1)
+  const nextStep = () => {
+    if (currentIndex + 1 === questions.length) {     
+      answers.forEach(answer => {
+        addNewAnswerService(answer)
+      })
+      updatePatchPollService(questions[currentIndex].parentPoll, { $inc: {submissions: 1} })
+      Swal.fire('thank you!')
+      .then(() => navigate("/"))
+      .catch(err => console.log(err))      
+    } else {
+      setCurrentIndex(currentIndex + 1)
+    }    
   }
 
   const showQuestion = () => {
     const ViewType = VoteQuestionsMap[questions[currentIndex].type]
-    return <ViewType question={questions[currentIndex]} next={next} saveAnswer={saveAnswer} />
+    return <ViewType question={questions[currentIndex]} nextStep={nextStep} saveAnswer={saveAnswer} />
   }
 
-  const saveAnswer = (e, answer) => {
-    e.preventDefault()
-    next()
-    console.log('answer saved!')
-    console.log(answer)
+  const saveAnswer = async (currentAnswer) => {
+    currentAnswer.parentQuestion = questions[currentIndex]._id
+    currentAnswer.replierEmail = 'test@test.com'
+    console.log('answers array:', answers)
+    console.log('current answer:', currentAnswer)
+    setAnswers([...answers, currentAnswer])
+    console.log('answers array after setting:', answers)
+    nextStep()
   }
+
 
   return (
     <div className="grid grid-cols-5-md grid-cols-1 u-gap-2 mx-0-md mx-2">
