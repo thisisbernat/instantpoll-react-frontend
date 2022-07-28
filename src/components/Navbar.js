@@ -50,7 +50,7 @@ function Navbar(props) {
                             <div className="nav-dropdown-link"><div className="avatar text-gray-000 avatar--sm" data-text={user.firstname.charAt(0) + user.lastname.charAt(0).toLowerCase()}></div></div>
                             <ul className={isDropdownOpen ? "dropdown-menu dropdown-animated" : "dropdown-menu dropdown-animated dropdown-shown"} role="menu">
                                 <li className="menu-item"><Link to="/dashboard" className="react-link" onClick={() => setMenuOpen(!isMenuOpen)}>Dashboard</Link></li>
-                                <li className="menu-item"><Link to="/profile" className="react-link" onClick={() => setMenuOpen(!isMenuOpen)}>Profile</Link></li>                                
+                                {/* <li className="menu-item"><Link to="/profile" className="react-link" onClick={() => setMenuOpen(!isMenuOpen)}>Profile</Link></li>*/}
                                 <li className="dropdown-menu-divider"></li>
                                 <li className="menu-item ml-2"><div onClick={() => { logOutUser(); setMenuOpen(!isMenuOpen); }} className="text-primary font-extrabold">Log out</div></li>
                             </ul>

@@ -38,10 +38,9 @@ function Dashboard() {
       cancelButtonText: `No`,
       confirmButtonText: `Publish`,
       showCancelButton: true,
-      showCloseButton: true,
       customClass: {
-        cancelButton: 'bg-teal-400 text-white btn--sm',
-        confirmButton: 'bg-red-700 text-white btn--sm'
+        cancelButton: 'btn-dark btn--sm',
+        confirmButton: 'bg-teal-600 text-white btn--sm'
       }
     }
     Swal.fire(confAlert)
@@ -65,8 +64,8 @@ function Dashboard() {
       showCancelButton: true,
       showCloseButton: true,
       customClass: {
-        cancelButton: 'bg-teal-400 text-white btn--sm',
-        confirmButton: 'bg-red-700 text-white btn--sm'
+        cancelButton: 'btn-dark btn--sm',
+        confirmButton: 'bg-teal-600 text-white btn--sm'
       }
     }
     Swal.fire(confAlert)
@@ -91,8 +90,8 @@ function Dashboard() {
       showCancelButton: true,
       showCloseButton: true,
       customClass: {
-        cancelButton: 'bg-teal-400 text-white btn--sm',
-        confirmButton: 'bg-red-700 text-white btn--sm'
+        cancelButton: 'btn-dark btn--sm',
+        confirmButton: 'bg-teal-600 text-white btn--sm'
       }
     }
     Swal.fire(confAlert)

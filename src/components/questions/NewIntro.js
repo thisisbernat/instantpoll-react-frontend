@@ -82,9 +82,9 @@ function NewIntro(props) {
                     </div>
                 </div>
             </div>
-            <button type="submit" className="text-white bg-indigo-900 btn--sm u-pull-right mr-1">Save</button>
+            <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
             </form>
-            <button className="outline btn-danger btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
+            <button className="outline btn-primary btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
             {/* Question body */}
 
         </div>

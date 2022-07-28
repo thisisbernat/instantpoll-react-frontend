@@ -39,11 +39,23 @@ function NewSigleChoice(props) {
         const optionsCopy = options.filter(option => option !== '')
 
         if (title === '') {
-            Swal.fire('Must provide a title')
+            Swal.fire({
+                title: 'Question title missing!',
+                text: 'Please edit the question title before saving it.',
+                customClass: {
+                  confirmButton: 'bg-teal-600 text-white',
+                }
+              })
             return
         }
         if (optionsCopy.length < 2) {
-            Swal.fire('Must provide at least two valid options')
+            Swal.fire({
+                title: 'Missing options!',
+                text: 'Please provide at least two correct options.',
+                customClass: {
+                  confirmButton: 'bg-teal-600 text-white',
+                }
+              })
             return
         }
         
@@ -55,10 +67,10 @@ function NewSigleChoice(props) {
 
     const saveTitle = () => {
         let confAlert = {
-            title: 'Edit title',
+            title: 'Question title',
+            text: 'Please, enter a question title here',
             input: 'text',
             inputValue: title,
-            showCloseButton: true,
             customClass: {
                 confirmButton: 'bg-teal-600 text-white btn--sm',
                 input: 'max-w-90p mx-auto'
@@ -114,9 +126,9 @@ function NewSigleChoice(props) {
                         <div className="u-flex u-items-center u-gap-1 pointer" onClick={createOption}><FontAwesomeIcon icon={faCircleDot} className="hidden" /> <div className="btn u-flex u-items-center u-justify-center u-flex-grow-1 text-lg bg-teal-600 dark-teal-btn text-gray-000 tooltip tooltip--bottom" data-tooltip="Add extra option"><FontAwesomeIcon icon={faCirclePlus} /></div> <FontAwesomeIcon className="text-gray-600 text-lg hidden" icon={faTrashCan} /></div>
                     </div>
                 </div>
-                <button type="submit" className="text-white bg-indigo-900 btn--sm u-pull-right mr-1">Save</button>
+                <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
             </form>
-            <button className="outline btn-danger btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
+            <button className="outline btn-primary btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
             {/* Question body */}
         </div>
     )

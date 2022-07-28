@@ -81,7 +81,8 @@ function Vote() {
       })
       updatePatchPollService(questions[0].parentPoll, { $inc: {submissions: 1} })
       Swal.fire({
-        text: 'Thank you for your participation',
+        icon: 'success',
+        html: 'Thank you for your participation<br /><strong>InstantPoll</strong>',
         customClass: { confirmButton: 'text-white bg-teal-600'}
       })
       .then(() => navigate("/"))

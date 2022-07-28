@@ -71,7 +71,13 @@ function NewPoll() {
     if (questions.length > 0) {
       const lastQ = questions.slice(-1)[0]
       if (!lastQ.isSaved) {
-        Swal.fire('Save the last question before adding another one')
+        Swal.fire({
+          title: 'Before adding a new question...',
+          text: '...please save the at least one.',
+          customClass: {
+            confirmButton: 'bg-teal-600 text-white',
+          }
+        })
         return
       }
     }
@@ -98,8 +104,8 @@ function NewPoll() {
       showCancelButton: true,
       showCloseButton: true,
       customClass: {
-        cancelButton: 'bg-indigo-800 text-white btn--sm',
-        confirmButton: 'bg-red-700 text-white btn--sm'
+        cancelButton: 'btn-dark btn--sm',
+        confirmButton: 'bg-teal-600 text-white btn--sm'
       }
     }
     Swal.fire(confAlert)
@@ -122,10 +128,10 @@ function NewPoll() {
 
   const saveTitle = () => {
     let confAlert = {
-      title: 'Enter poll title',
+      title: 'Poll title',
+      text: 'Please, enter a poll title here',
       input: 'text',
       inputValue: pollTitle,
-      showCloseButton: true,
       customClass: {
         confirmButton: 'bg-teal-600 text-white',
         input: 'max-w-90p mx-auto'
@@ -144,23 +150,47 @@ function NewPoll() {
   }
 
   const pollOptionsMenu = () => {
-    Swal.fire('Poll options')
+    Swal.fire({
+      title: 'Poll options',
+      text: 'Here, you will be able to set the poll as public, where everybody will be able to vote, or private, where only a list of users will be able to vote',
+      customClass: {
+        confirmButton: 'bg-teal-600 text-white',
+      }
+    })
   }
 
   const savePoll = async (isPublished) => {
     if (pollTitle === '') {
-      Swal.fire('You must provide a poll title')
+      Swal.fire({
+        title: 'Poll title missing!',
+        text: 'Please edit the poll title before saving or publishing the poll.',
+        customClass: {
+          confirmButton: 'bg-teal-600 text-white',
+        }
+      })
       return
     }
     if (questions.length === 0) {
-      Swal.fire('You must save at least one question')
+      Swal.fire({
+        title: 'No questions added!',
+        text: 'You must configure and save at least one question.',
+        customClass: {
+          confirmButton: 'bg-teal-600 text-white',
+        }
+      })
       return
     } else if (questions.length > 0 && questions.at(-1).isSaved === false) {
-      Swal.fire('You must save at least one question')
+      Swal.fire({
+        title: 'No questions added!',
+        text: 'You must configure and save at least one question.',
+        customClass: {
+          confirmButton: 'bg-teal-600 text-white',
+        }
+      })
       return
     }
 
-    if(isPublished) {
+    if (isPublished) {
       let confAlert = {
         text: 'Are you sure you want to publish the poll?',
         icon: 'warning',
@@ -209,13 +239,27 @@ function NewPoll() {
     }
     catch (err) { console.log(err) }
 
-    if(isPublished) {
-      const value = await Swal.fire('The poll has been published')
+    if (isPublished) {
+      const value = await Swal.fire({
+        title: 'The poll has been published',
+        text: 'People can start participating right now!',
+        icon: 'success',
+        customClass: {
+          confirmButton: 'bg-teal-600 text-white',
+        }
+      })
       if (value.isConfirmed) {
         navigate(`/poll/${savedPollId}`)
       }
     } else if (!isPublished) {
-      const value = await Swal.fire('The poll has been saved')
+      const value = await Swal.fire({
+        title: 'The poll has been saved',
+        text: 'It can be published through your Dasboard',
+        icon: 'success',
+        customClass: {
+          confirmButton: 'bg-teal-600 text-white',
+        }
+      })
       if (value.isConfirmed) {
         navigate("/dashboard")
       }
