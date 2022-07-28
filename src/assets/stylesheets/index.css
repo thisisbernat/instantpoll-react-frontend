@@ -26,6 +26,11 @@
   background-size: cover;
 }
 
+.dotted {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
 /* .cta-button {
   background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
 } */

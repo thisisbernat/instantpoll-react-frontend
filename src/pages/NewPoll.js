@@ -226,7 +226,7 @@ function NewPoll() {
       <div className="u-flex u-flex-wrap u-justify-space-between-md u-items-center u-justify-center">
         <h4 className="font-alt text-yellow-400">
           <div onClick={() => saveTitle()} onMouseEnter={() => setShowPen(true)} onMouseLeave={() => setShowPen(false)} className="click-area">
-            {pollTitle ? pollTitle : 'Enter your poll title here!'} {<FontAwesomeIcon className={showPen ? "text-gray-600 text-lg" : "text-gray-600 text-sm hidden"} icon={faPen} />}
+            <font className="dotted">{pollTitle ? pollTitle : 'Edit your poll title here!'}</font> {<FontAwesomeIcon className={showPen ? "text-gray-600 text-lg" : "text-gray-600 text-sm hidden"} icon={faPen} />}
           </div>
         </h4>
         <div className="u-flex u-gap-1">

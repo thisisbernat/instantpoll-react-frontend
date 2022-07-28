@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { AuthContext } from "../context/auth.context"
+import { addNewAnswerService } from '../services/answers.services.js'
 import { getAllQuestionsService } from '../services/questions.services.js'
 
 import VoteList from '../components/votes/VoteList'
@@ -45,6 +47,7 @@ function Vote() {
   }
   const [questions, setQuestions] = useState([sampleQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [answers, setAnswers] = useState([])
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -69,7 +72,14 @@ function Vote() {
 
   const showQuestion = () => {
     const ViewType = VoteQuestionsMap[questions[currentIndex].type]
-    return <ViewType question={questions[currentIndex]} next={next} />
+    return <ViewType question={questions[currentIndex]} next={next} saveAnswer={saveAnswer} />
+  }
+
+  const saveAnswer = (e, answer) => {
+    e.preventDefault()
+    next()
+    console.log('answer saved!')
+    console.log(answer)
   }
 
   return (
