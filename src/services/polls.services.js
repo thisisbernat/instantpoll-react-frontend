@@ -7,11 +7,6 @@ const getAllPollsService = (userId) => {
 	return service.get(`${URL}/${userId}`)
 }
 
-// GET ONE POLL
-const getPollService = (id) => {
-	return service.get(`${URL}/${id}`)
-}
-
 // ADD NEW POLL
 const addNewPollService = (newPoll) => {
 	return service.post(`${URL}/`, newPoll)
@@ -32,4 +27,4 @@ const deletePollService = (id) => {
 	return service.delete(`${URL}/${id}`)
 }
 
-export { getAllPollsService, getPollService, addNewPollService, updatePollService, deletePollService, updatePatchPollService }
+export { getAllPollsService, addNewPollService, updatePollService, deletePollService, updatePatchPollService }
