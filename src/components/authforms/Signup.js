@@ -41,7 +41,7 @@ function Signup(props) {
             <div className="bg-white p-4 u-text-center u-round-xs u-shadow-lg">
                 <h3>Sign up</h3>
                 <form className="u-flex u-flex-column" onSubmit={handleSignupSubmit}>
-                    <div className="u-flex u-gap-2 u-flex-wrap mb-1 mt-1">
+                    <div className="grid grid-cols-2-md grid-cols-1 u-gap-2 my-1">
                         <div className="input-control mt-0 mb-0">
                             <input className="input--sm input-contains-icon" type="text" name="firstname" value={firstname} onChange={handleFirstName} placeholder="First name" /><span className="icon"><FontAwesomeIcon icon={faAddressCard} className="fa-wrapper" /></span>
                         </div>
