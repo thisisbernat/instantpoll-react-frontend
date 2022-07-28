@@ -50,9 +50,7 @@ function Vote() {
     type: 'intro',
     message: 'Sample message',
     buttonText: 'ok'
-  }
-
-  
+  } 
 
   const [questions, setQuestions] = useState([sampleQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -60,6 +58,7 @@ function Vote() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+
     getAllQuestionsService(pollId)
       .then(response => {
         const sortedQuestions = response.data.sort((a, b) => {
@@ -81,7 +80,10 @@ function Vote() {
         addNewAnswerService(answer)
       })
       updatePatchPollService(questions[0].parentPoll, { $inc: {submissions: 1} })
-      Swal.fire('thank you!')
+      Swal.fire({
+        text: 'Thank you for your participation',
+        customClass: { confirmButton: 'text-white bg-teal-600'}
+      })
       .then(() => navigate("/"))
       .catch(err => console.log(err))      
     } 

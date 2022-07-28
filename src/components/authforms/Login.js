@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import { loginService } from "../../services/auth.services"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faLock, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 
 function Login(props) {
@@ -45,7 +45,9 @@ function Login(props) {
                     </div>
                     <button type="submit" className="mt-2 bg-teal-400 text-white light-teal-btn">Log in</button>
                 </form>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                {errorMessage && <div class="toast toast--warning mx-auto">
+                    <p><FontAwesomeIcon icon={faCircleInfo} /> {errorMessage}</p>
+                </div>}
             </div>
         </div>
     )

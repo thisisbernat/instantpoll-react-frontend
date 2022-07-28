@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { signupService } from '../../services/auth.services'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faLock, faUser, faAddressCard } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faLock, faUser, faAddressCard, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 
 function Signup(props) {
@@ -30,8 +30,8 @@ function Signup(props) {
             navigate("/login")
         } catch (err) {
             if (err.response?.status === 400) {
-                setErrorMessage(err.response.data.errorMessage)
-                console.log(errorMessage)
+                setErrorMessage(err.response.data.message)
+                console.log(err.response.data.message)
             }
         }
     }
@@ -66,7 +66,9 @@ function Signup(props) {
                     </div>
                     <button type="submit" className="mt-2 bg-teal-400 text-white light-teal-btn">Sign up</button>
                 </form>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                {errorMessage && <div class="toast toast--warning mx-auto">
+                    <p><FontAwesomeIcon icon={faCircleInfo} /> {errorMessage}</p>
+                </div>}
             </div>
         </div>
     )
