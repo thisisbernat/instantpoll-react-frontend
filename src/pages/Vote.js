@@ -20,6 +20,7 @@ import VoteRanking from '../components/votes/VoteRanking'
 import VoteRating from '../components/votes/VoteRating'
 import VoteSingleChoice from '../components/votes/VoteSingleChoice'
 import Share from '../components/votes/Share'
+import SavingResults from '../components/votes/SavingResults'
 
 
 const VoteQuestionsMap = {
@@ -35,7 +36,8 @@ const VoteQuestionsMap = {
   rating: VoteRating,
   ranking: VoteRanking,
   list: VoteList,
-  thanks: VoteThanks
+  thanks: VoteThanks,
+  saving: SavingResults
 }
 
 function Vote() {
@@ -49,6 +51,9 @@ function Vote() {
     message: 'Sample message',
     buttonText: 'ok'
   }
+
+  
+
   const [questions, setQuestions] = useState([sampleQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState([])
@@ -65,7 +70,7 @@ function Vote() {
           }
           return 0
         })
-        setQuestions(sortedQuestions)
+        setQuestions([...sortedQuestions, {type: 'saving'}])
       })
       .catch(err => console.log(err))
   }, [pollId])
@@ -75,11 +80,12 @@ function Vote() {
       answers.forEach(answer => {
         addNewAnswerService(answer)
       })
-      updatePatchPollService(questions[currentIndex].parentPoll, { $inc: {submissions: 1} })
+      updatePatchPollService(questions[0].parentPoll, { $inc: {submissions: 1} })
       Swal.fire('thank you!')
       .then(() => navigate("/"))
       .catch(err => console.log(err))      
-    } else {
+    } 
+    else {
       setCurrentIndex(currentIndex + 1)
     }    
   }
@@ -92,10 +98,7 @@ function Vote() {
   const saveAnswer = async (currentAnswer) => {
     currentAnswer.parentQuestion = questions[currentIndex]._id
     currentAnswer.replierEmail = 'test@test.com'
-    console.log('answers array:', answers)
-    console.log('current answer:', currentAnswer)
-    setAnswers([...answers, currentAnswer])
-    console.log('answers array after setting:', answers)
+    setAnswers([...answers, currentAnswer])    
     nextStep()
   }
 
