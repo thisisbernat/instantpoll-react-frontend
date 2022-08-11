@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen } from '@fortawesome/free-solid-svg-icons'
 
-function NewIntro(props) {
+function SavedIntro(props) {
     const { index, CRUD, question } = props
     const { title, message, buttonText } = question
     const { updateQuestion } = CRUD
@@ -35,11 +35,11 @@ function NewIntro(props) {
                 <button style={{ cursor: "default" }} className="btn bg-teal-300 text-white btn--sm mt-2">{buttonText}</button>
                 </div>
             </div>
-            <button onClick={handleEdit} className="text-white bg-indigo-900 btn--sm u-pull-right mr-1">Edit <FontAwesomeIcon icon={faPen} /></button>
+            <button onClick={handleEdit} className="bg-teal-600 text-white btn--sm u-pull-right mr-1">Edit <FontAwesomeIcon icon={faPen} /></button>
             {/* Question body */}
 
         </div>
     )
 }
 
-export default NewIntro
+export default SavedIntro

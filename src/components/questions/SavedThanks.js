@@ -1,11 +1,23 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 
-function NewThanks(props) {
+function SavedThanks(props) {
+    const { index, CRUD, question } = props
+    const { title, message, buttonText } = question
+    const { updateQuestion } = CRUD
+
+
+    const handleEdit = (e) => {
+        e.preventDefault()
+        updateQuestion(index, 'isSaved', false)
+    }
+
+
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-3 pt-2 pb-1">
             {/* Question header */}
-            <div className="u-flex u-flex-column u-justify-center u-relative pb-1">
+            <div className="u-flex u-flex-column u-justify-center u-relative">
                 <FontAwesomeIcon className="text-gray-600 grip top-grip" icon={faGrip} />
                 <div className="u-absolute-md u-left-0 u-right-0">
                     <div className="u-flex u-flex-row-md u-justify-space-between-md u-items-center u-flex-column">
@@ -14,24 +26,22 @@ function NewThanks(props) {
                     </div>
                 </div>
             </div>
-            <div className="u-text-break font-alt font-bold py-1 text-yellow-400 u-text-center hidden" style={{ lineHeight: "1.2rem" }}>This is an open question title example, what do you think? <FontAwesomeIcon className="text-gray-600 text-sm" icon={faPen} /></div>
             {/* Question header */}
 
             {/* Question body */}
-            <form className="p-1 px-10-md">
-                <label className="mb-0 text-sm">Write down a nice thank you note for the user and customize the confirmation button</label>
-                <textarea placeholder="Introduction text shown to the user"></textarea>
-                <div className="u-flex u-justify-space-between">
-                    <div className="u-flex u-items-baseline u-flex-grow-1">
-                        <input className="mr-1 input--sm max-w-50p" type="text" placeholder="Custom button text" />
-                        <div style={{ cursor: "default" }} className="btn bg-gray-400 btn--sm tooltip tooltip--bottom" data-tooltip="Sample button">Sample</div>
-                    </div>
+            <div className="p-1 px-10-md u-text-center mt-3">
+                <div className="mx-24-md p-4 u-round-sm u-shadow-md" style={{border:"solid 1px lightgrey"}}>
+                <h1 className="text-success"><FontAwesomeIcon icon={faCircleCheck} /></h1>
+                <h4>{title}</h4>
+                <p className="mt-4">{message}</p>
+                <button style={{ cursor: "default" }} className="btn bg-teal-300 text-white btn--sm mt-2">{buttonText}</button>
                 </div>
-            </form>
-            <button className="text-white bg-indigo-900 btn--sm u-pull-right mr-1">Save</button>
+            </div>
+            <button onClick={handleEdit} className="bg-teal-600 text-white btn--sm u-pull-right mr-1">Edit <FontAwesomeIcon icon={faPen} /></button>
             {/* Question body */}
+
         </div>
     )
 }
 
-export default NewThanks
+export default SavedThanks

@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import singleIcon from '../../assets/types/single.svg'
-import multipleIcon from '../../assets/types/multiple.svg'
-import ratingIcon from '../../assets/types/rating.svg'
-import openIcon from '../../assets/types/open.svg'
-import rankingIcon from '../../assets/types/ranking.svg'
-import listIcon from '../../assets/types/list.svg'
-import introIcon from '../../assets/types/intro.svg'
-import thanksIcon from '../../assets/types/thanks.svg'
+import {ReactComponent as SingleIcon} from '../../assets/types/single.svg'
+import {ReactComponent as MultipleIcon} from '../../assets/types/multiple.svg'
+import {ReactComponent as RatingIcon} from '../../assets/types/rating.svg'
+import {ReactComponent as OpenIcon} from '../../assets/types/open.svg'
+import {ReactComponent as RankingIcon} from '../../assets/types/ranking.svg'
+import {ReactComponent as ListIcon} from '../../assets/types/list.svg'
+import {ReactComponent as IntroIcon} from '../../assets/types/intro.svg'
+import {ReactComponent as ThanksIcon} from '../../assets/types/thanks.svg'
 
 function NewQuestion(props) {
     const { index, CRUD } = props
@@ -34,7 +34,7 @@ function NewQuestion(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'intro')}>
                     <font className="text-xs u-absolute-md font-bold">Intro</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Greet the user with style"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-0-md" src={introIcon} alt="Single" />
+                    <IntroIcon className="pt-0-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -42,7 +42,7 @@ function NewQuestion(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'single')}>
                     <font className="text-xs u-absolute-md font-bold">Single choice</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="The user must choose one option only"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={singleIcon} alt="Single" />
+                    <SingleIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -50,7 +50,7 @@ function NewQuestion(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'multiple')}>
                     <font className="text-xs u-absolute-md font-bold">Multiple choice</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="The user can choose multiple options"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={multipleIcon} alt="Single" />
+                    <MultipleIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -58,7 +58,7 @@ function NewQuestion(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'open')}>
                     <font className="text-xs u-absolute-md font-bold">Open answer</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="A single line, a paragraph, date, email, number, etc."><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={openIcon} alt="Single" />
+                    <OpenIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -66,7 +66,7 @@ function NewQuestion(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'rating')}>
                     <font className="text-xs u-absolute-md font-bold">Rating</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Up to 5 stars!"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={ratingIcon} alt="Single" />
+                    <RatingIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -74,7 +74,7 @@ function NewQuestion(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'ranking')}>
                     <font className="text-xs u-absolute-md font-bold">Ranking</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Let the user rank some options"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={rankingIcon} alt="Single" />
+                    <RankingIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -82,7 +82,7 @@ function NewQuestion(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'list')}>
                     <font className="text-xs u-absolute-md font-bold">List</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Ask the user for a list"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={listIcon} alt="Single" />
+                    <ListIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -90,7 +90,7 @@ function NewQuestion(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'thanks')}>
                     <font className="text-xs u-absolute-md font-bold">Thank you</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="It's always nice to say thanks"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={thanksIcon} alt="Single" />
+                    <ThanksIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 

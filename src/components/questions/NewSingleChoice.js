@@ -116,7 +116,6 @@ function NewSigleChoice(props) {
 
             {/* Question body */}
             <form onSubmit={saveQuestion}>
-
                 <div className="u-flex u-flex-column u-gap-1 mx-auto">
                     <div className="mx-auto">
                         <label className="pl-3 mb-0 text-sm">Add all the options here!</label>

@@ -7,7 +7,7 @@ import numberIcon from '../../assets/types/open/number.svg'
 import phoneIcon from '../../assets/types/open/phone.svg'
 import singleLineIcon from '../../assets/types/open/single-line.svg'
 
-function NewOpen(props) {
+function SavedOpen(props) {
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-3 pt-2 pb-1">
 
@@ -79,4 +79,4 @@ function NewOpen(props) {
     )
 }
 
-export default NewOpen
+export default SavedOpen

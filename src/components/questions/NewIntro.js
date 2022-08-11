@@ -15,17 +15,47 @@ function NewIntro(props) {
     const [showPen, setShowPen] = useState(false)
     const [message, setMessage] = useState(savedMessage)
     const [buttonText, setButtonText] = useState(savedButtonText)
-    
+
     const handleMessage = (e) => setMessage(e.target.value)
     const handleButtonText = (e) => setButtonText(e.target.value)
 
     const saveQuestion = (e) => {
         e.preventDefault()
+        if (title === '') {
+            Swal.fire({
+                title: 'Title missing!',
+                text: 'Please provide a question title before saving it.',
+                customClass: {
+                  confirmButton: 'bg-teal-600 text-white',
+                }
+              })
+            return
+        }
+        if (message === undefined) {
+            Swal.fire({
+                title: 'Message missing!',
+                text: 'Please provide a question message before saving it.',
+                customClass: {
+                  confirmButton: 'bg-teal-600 text-white',
+                }
+              })
+            return
+        }
+        if (buttonText === undefined) {
+            Swal.fire({
+                title: 'Button text missing!',
+                text: 'Please provide the button text before saving it.',
+                customClass: {
+                  confirmButton: 'bg-teal-600 text-white',
+                }
+              })
+            return
+        }
         updateQuestion(index, 'title', title)
         updateQuestion(index, 'message', message)
         updateQuestion(index, 'buttonText', buttonText)
         updateQuestion(index, 'isCompulsory', true)
-        updateQuestion(index, 'isSaved', true)        
+        updateQuestion(index, 'isSaved', true)
     }
 
     const saveTitle = () => {
@@ -72,17 +102,17 @@ function NewIntro(props) {
 
             {/* Question body */}
             <form onSubmit={saveQuestion}>
-            <div className="p-1 px-10-md">
-                <label className="mb-0 text-sm">Write down a welcoming message for the user and customize the confirmation button</label>
-                <textarea value={message} onChange={handleMessage} placeholder="Introduction text shown to the user"></textarea>
-                <div className="u-flex u-justify-space-between">
-                    <div className="u-flex u-items-baseline u-flex-grow-1">
-                        <input className="mr-1 input--sm max-w-50p" type="text" value={buttonText} onChange={handleButtonText} placeholder="Custom button text" />
-                        <div style={{ cursor: "default" }} className="btn bg-gray-400 btn--sm tooltip tooltip--bottom" data-tooltip="Sample button">{buttonText ? buttonText : 'Sample'}</div>
+                <div className="p-1 px-10-md">
+                    <label className="mb-0 text-sm">Write down a welcoming message for the user and customize the confirmation button</label>
+                    <textarea value={message} onChange={handleMessage} placeholder="Introduction text shown to the user"></textarea>
+                    <div className="u-flex u-justify-space-between">
+                        <div className="u-flex u-items-baseline u-flex-grow-1">
+                            <input className="mr-1 input--sm max-w-50p" type="text" value={buttonText} onChange={handleButtonText} placeholder="Custom button text" />
+                            <div style={{ cursor: "default" }} className="btn bg-gray-400 btn--sm tooltip tooltip--bottom" data-tooltip="Sample button">{buttonText ? buttonText : 'Sample'}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
+                <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
             </form>
             <button className="outline btn-primary btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
             {/* Question body */}
