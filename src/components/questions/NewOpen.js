@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import openIcon from '../../assets/types/open.svg'
-import dateIcon from '../../assets/types/open/date.svg'
-import emailIcon from '../../assets/types/open/email.svg'
-import numberIcon from '../../assets/types/open/number.svg'
-import phoneIcon from '../../assets/types/open/phone.svg'
-import singleLineIcon from '../../assets/types/open/single-line.svg'
+import {ReactComponent as OpenIcon} from '../../assets/types/open.svg'
+import {ReactComponent as DateIcon} from '../../assets/types/open/date.svg'
+import {ReactComponent as EmailIcon} from '../../assets/types/open/email.svg'
+import {ReactComponent as NumberIcon} from '../../assets/types/open/number.svg'
+import {ReactComponent as PhoneIcon} from '../../assets/types/open/phone.svg'
+import {ReactComponent as SingleLineIcon} from '../../assets/types/open/single-line.svg'
 
 function NewOpen(props) {
     return (
@@ -30,7 +30,7 @@ function NewOpen(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
                     <font className="text-xs u-absolute-md font-bold">Paragraph</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Let the user enter a paragraph"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-0-md" src={openIcon} alt="Single" />
+                    <OpenIcon className="pt-0-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -38,7 +38,7 @@ function NewOpen(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
                     <font className="text-xs u-absolute-md font-bold">Single line</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Let the user enter a line of text"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={singleLineIcon} alt="Single" />
+                    <SingleLineIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -46,7 +46,7 @@ function NewOpen(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
                     <font className="text-xs u-absolute-md font-bold">Date</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Let the user enter a date"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={dateIcon} alt="Single" />
+                    <DateIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -54,7 +54,7 @@ function NewOpen(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
                     <font className="text-xs u-absolute-md font-bold">Number</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Ask something that must be answered with a number"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={numberIcon} alt="Single" />
+                    <NumberIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -62,7 +62,7 @@ function NewOpen(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
                     <font className="text-xs u-absolute-md font-bold">Email</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Ask for an email address"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={emailIcon} alt="Single" />
+                    <EmailIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
 
@@ -70,7 +70,7 @@ function NewOpen(props) {
                 <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
                     <font className="text-xs u-absolute-md font-bold">Phone number</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Ask for a phone number"><FontAwesomeIcon icon={faInfoCircle} /></font>
-                    <img className="pt-1-md" src={phoneIcon} alt="Single" />
+                    <PhoneIcon className="pt-1-md" alt="Single" />
                 </div>
                 {/* Option */}
             </div>
