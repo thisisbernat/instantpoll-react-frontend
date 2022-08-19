@@ -18,6 +18,16 @@ import NewSingleChoice from '../components/questions/NewSingleChoice'
 import NewThanks from '../components/questions/NewThanks'
 import AddQuestion from '../components/questions/AddQuestion'
 import NewOpen from '../components/questions/NewOpen'
+// import NewParagraph from '../components/questions/NewParagraph'
+// import NewLine from '../components/questions/NewLine'
+// import NewDate from '../components/questions/NewDate'
+// import NewNumber from '../components/questions/NewNumber'
+// import NewEmail from '../components/questions/NewEmail'
+// import NewPhone from '../components/questions/NewPhone'
+
+
+
+
 
 import SavedIntro from '../components/questions/SavedIntro'
 import SavedList from '../components/questions/SavedList'
@@ -37,7 +47,13 @@ const NewQuestionsMap = {
   rating: NewRating,
   ranking: NewRanking,
   list: NewList,
-  thanks: NewThanks
+  thanks: NewThanks,
+  // paragraph: NewParagraph,
+  // line: NewLine,
+  // date: NewDate,
+  // number: NewNumber,
+  // email: NewEmail,
+  // phone: NewPhone
 }
 
 const SavedQuestionsMap = {

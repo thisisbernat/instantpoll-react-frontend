@@ -8,6 +8,9 @@ import {ReactComponent as PhoneIcon} from '../../assets/types/open/phone.svg'
 import {ReactComponent as SingleLineIcon} from '../../assets/types/open/single-line.svg'
 
 function NewOpen(props) {
+    const { index, CRUD } = props
+    const { updateQuestion } = CRUD
+
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-3 pt-2 pb-1">
 
@@ -27,7 +30,7 @@ function NewOpen(props) {
             {/* Question options */}
             <div className="grid grid-cols-3-md grid-cols-2 u-gap-2 p-1">
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'paragraph')}>
                     <font className="text-xs u-absolute-md font-bold">Paragraph</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Let the user enter a paragraph"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <OpenIcon className="pt-0-md" alt="Single" />
@@ -35,7 +38,7 @@ function NewOpen(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'line')}>
                     <font className="text-xs u-absolute-md font-bold">Single line</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Let the user enter a line of text"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <SingleLineIcon className="pt-1-md" alt="Single" />
@@ -43,7 +46,7 @@ function NewOpen(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'date')}>
                     <font className="text-xs u-absolute-md font-bold">Date</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Let the user enter a date"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <DateIcon className="pt-1-md" alt="Single" />
@@ -51,7 +54,7 @@ function NewOpen(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'number')}>
                     <font className="text-xs u-absolute-md font-bold">Number</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Ask something that must be answered with a number"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <NumberIcon className="pt-1-md" alt="Single" />
@@ -59,7 +62,7 @@ function NewOpen(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'email')}>
                     <font className="text-xs u-absolute-md font-bold">Email</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Ask for an email address"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <EmailIcon className="pt-1-md" alt="Single" />
@@ -67,7 +70,7 @@ function NewOpen(props) {
                 {/* Option */}
 
                 {/* Option */}
-                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md">
+                <div className="type-pill bg-gray-100 p-1 u-round-xs u-flex u-flex-column u-items-center u-relative-md" onClick={() => updateQuestion(index, 'type', 'phone')}>
                     <font className="text-xs u-absolute-md font-bold">Phone number</font>
                     <font className="u-absolute-md u-top-1 u-right-0 pr-1-md text-gray-600 tooltip tooltip--bottom" data-tooltip="Ask for a phone number"><FontAwesomeIcon icon={faInfoCircle} /></font>
                     <PhoneIcon className="pt-1-md" alt="Single" />
