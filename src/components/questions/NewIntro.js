@@ -83,7 +83,6 @@ function NewIntro(props) {
 
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-3 pt-2 pb-1">
-            {/* Question header */}
             <div className="u-flex u-flex-column u-justify-center u-relative pb-1">
                 <FontAwesomeIcon className="text-gray-600 grip top-grip" icon={faGrip} />
                 <div className="u-absolute-md u-left-0 u-right-0">
@@ -98,9 +97,6 @@ function NewIntro(props) {
                     <font className="dotted">{title ? title : 'Edit your title here!'}</font> {<FontAwesomeIcon className={showPen ? "text-gray-600 text-sm" : "text-gray-600 text-sm hidden"} icon={faPen} />}
                 </div>
             </div>
-            {/* Question header */}
-
-            {/* Question body */}
             <form onSubmit={saveQuestion}>
                 <div className="p-1 px-10-md">
                     <label className="mb-0 text-sm">Write down a welcoming message for the user and customize the confirmation button</label>
@@ -115,8 +111,6 @@ function NewIntro(props) {
                 <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
             </form>
             <button className="outline btn-primary btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
-            {/* Question body */}
-
         </div>
     )
 }

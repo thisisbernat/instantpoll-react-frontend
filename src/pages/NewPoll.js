@@ -101,7 +101,7 @@ function NewPoll() {
     setQuestions([...questions, newQuestion])
   }
 
-  const readQuestion = (index) => questions[index]
+  // const readQuestion = (index) => questions[index]
 
   const updateQuestion = (index, property, newValue) => {
     let questionsCopy = [...questions]
@@ -135,8 +135,8 @@ function NewPoll() {
   }
 
   const CRUD = {
-    createQuestion,
-    readQuestion,
+    // createQuestion,
+    // createQuestion,
     updateQuestion,
     deleteQuestion
   }

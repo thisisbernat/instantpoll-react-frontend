@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 
-function AddQuestion(props) {
+export default function AddQuestion(props) {
     const { createQuestion, newQuestion } = props
 
     return (
@@ -13,5 +13,3 @@ function AddQuestion(props) {
         </div>
     )
 }
-
-export default AddQuestion
