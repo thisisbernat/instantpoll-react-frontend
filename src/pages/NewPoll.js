@@ -1,10 +1,14 @@
 import { addNewPollService, updatePatchPollService } from '../services/polls.services.js'
 import { faFloppyDisk, faGears, faPaperPlane, faPen } from '@fortawesome/free-solid-svg-icons'
 import { useContext, useState } from 'react'
-
-import AddQuestion from '../components/questions/AddQuestion'
+import Swal from 'sweetalert2'
+import { addNewQuestionService } from '../services/questions.services.js'
+import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/auth.context"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import AddQuestion from '../components/questions/AddQuestion'
+
 import NewIntro from '../components/questions/new/NewIntro'
 import NewList from '../components/questions/new/NewList'
 import NewMultipleChoice from '../components/questions/new/NewMultipleChoice'
@@ -15,6 +19,12 @@ import NewRanking from '../components/questions/new/NewRanking'
 import NewRating from '../components/questions/new/NewRating'
 import NewSingleChoice from '../components/questions/new/NewSingleChoice'
 import NewThanks from '../components/questions/new/NewThanks'
+import NewLine from '../components/questions/new/NewLine'
+import NewDate from '../components/questions/new/NewDate'
+import NewNumber from '../components/questions/new/NewNumber'
+import NewEmail from '../components/questions/new/NewEmail'
+import NewPhone from '../components/questions/new/NewPhone'
+
 import SavedIntro from '../components/questions/saved/SavedIntro'
 import SavedList from '../components/questions/saved/SavedList'
 import SavedMultipleChoice from '../components/questions/saved/SavedMultipleChoice'
@@ -24,28 +34,11 @@ import SavedRanking from '../components/questions/saved/SavedRanking'
 import SavedRating from '../components/questions/saved/SavedRating'
 import SavedSingleChoice from '../components/questions/saved/SavedSingleChoice'
 import SavedThanks from '../components/questions/saved/SavedThanks'
-import Swal from 'sweetalert2'
-import { addNewQuestionService } from '../services/questions.services.js'
-import { useNavigate } from "react-router-dom"
-
-// import NewLine from '../components/questions/NewLine'
-// import NewDate from '../components/questions/NewDate'
-// import NewNumber from '../components/questions/NewNumber'
-// import NewEmail from '../components/questions/NewEmail'
-// import NewPhone from '../components/questions/NewPhone'
-
-
-
-
-
-
-
-
-
-
-
-
-
+import SavedLine from '../components/questions/saved/SavedLine'
+import SavedDate from '../components/questions/saved/SavedDate'
+import SavedNumber from '../components/questions/saved/SavedNumber'
+import SavedEmail from '../components/questions/saved/SavedEmail'
+import SavedPhone from '../components/questions/saved/SavedPhone'
 
 
 const NewQuestionsMap = {
@@ -59,11 +52,11 @@ const NewQuestionsMap = {
   list: NewList,
   thanks: NewThanks,
   paragraph: NewParagraph,
-  // line: NewLine,
-  // date: NewDate,
-  // number: NewNumber,
-  // email: NewEmail,
-  // phone: NewPhone
+  line: NewLine,
+  date: NewDate,
+  number: NewNumber,
+  email: NewEmail,
+  phone: NewPhone
 }
 
 const SavedQuestionsMap = {
@@ -76,6 +69,11 @@ const SavedQuestionsMap = {
   list: SavedList,
   thanks: SavedThanks,
   paragraph: SavedParagraph,
+  line: SavedLine,
+  date: SavedDate,
+  number: SavedNumber,
+  email: SavedEmail,
+  phone: SavedPhone
 }
 
 function NewPoll() {

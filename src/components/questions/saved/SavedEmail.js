@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function SavedParagraph(props) {
+export default function SavedEmail(props) {
   const {index, CRUD: {updateQuestion}, question: {title, isCompulsory}} = props
 
   const handleEdit = (e) => {
