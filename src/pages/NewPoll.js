@@ -1,24 +1,33 @@
-import { useState, useContext } from 'react'
-import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../context/auth.context"
 import { addNewPollService, updatePatchPollService } from '../services/polls.services.js'
-import { addNewQuestionService } from '../services/questions.services.js'
+import { faFloppyDisk, faGears, faPaperPlane, faPen } from '@fortawesome/free-solid-svg-icons'
+import { useContext, useState } from 'react'
+
+import AddQuestion from '../components/questions/AddQuestion'
+import { AuthContext } from "../context/auth.context"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFloppyDisk, faPen, faPaperPlane, faGears } from '@fortawesome/free-solid-svg-icons'
-import Swal from 'sweetalert2'
-
-
-import NewQuestion from '../components/questions/new/NewQuestion'
 import NewIntro from '../components/questions/new/NewIntro'
 import NewList from '../components/questions/new/NewList'
 import NewMultipleChoice from '../components/questions/new/NewMultipleChoice'
+import NewOpen from '../components/questions/new/NewOpen'
+import NewParagraph from '../components/questions/new/NewParagraph'
+import NewQuestion from '../components/questions/new/NewQuestion'
 import NewRanking from '../components/questions/new/NewRanking'
 import NewRating from '../components/questions/new/NewRating'
 import NewSingleChoice from '../components/questions/new/NewSingleChoice'
 import NewThanks from '../components/questions/new/NewThanks'
-import AddQuestion from '../components/questions/AddQuestion'
-import NewOpen from '../components/questions/new/NewOpen'
-// import NewParagraph from '../components/questions/NewParagraph'
+import SavedIntro from '../components/questions/saved/SavedIntro'
+import SavedList from '../components/questions/saved/SavedList'
+import SavedMultipleChoice from '../components/questions/saved/SavedMultipleChoice'
+import SavedOpen from '../components/questions/saved/SavedOpen'
+import SavedParagraph from '../components/questions/saved/SavedParagraph'
+import SavedRanking from '../components/questions/saved/SavedRanking'
+import SavedRating from '../components/questions/saved/SavedRating'
+import SavedSingleChoice from '../components/questions/saved/SavedSingleChoice'
+import SavedThanks from '../components/questions/saved/SavedThanks'
+import Swal from 'sweetalert2'
+import { addNewQuestionService } from '../services/questions.services.js'
+import { useNavigate } from "react-router-dom"
+
 // import NewLine from '../components/questions/NewLine'
 // import NewDate from '../components/questions/NewDate'
 // import NewNumber from '../components/questions/NewNumber'
@@ -29,14 +38,15 @@ import NewOpen from '../components/questions/new/NewOpen'
 
 
 
-import SavedIntro from '../components/questions/saved/SavedIntro'
-import SavedList from '../components/questions/saved/SavedList'
-import SavedMultipleChoice from '../components/questions/saved/SavedMultipleChoice'
-import SavedRanking from '../components/questions/saved/SavedRanking'
-import SavedRating from '../components/questions/saved/SavedRating'
-import SavedSingleChoice from '../components/questions/saved/SavedSingleChoice'
-import SavedThanks from '../components/questions/saved/SavedThanks'
-import SavedOpen from '../components/questions/saved/SavedOpen'
+
+
+
+
+
+
+
+
+
 
 const NewQuestionsMap = {
   tbd: NewQuestion,
@@ -48,7 +58,7 @@ const NewQuestionsMap = {
   ranking: NewRanking,
   list: NewList,
   thanks: NewThanks,
-  // paragraph: NewParagraph,
+  paragraph: NewParagraph,
   // line: NewLine,
   // date: NewDate,
   // number: NewNumber,
@@ -64,7 +74,8 @@ const SavedQuestionsMap = {
   rating: SavedRating,
   ranking: SavedRanking,
   list: SavedList,
-  thanks: SavedThanks
+  thanks: SavedThanks,
+  paragraph: SavedParagraph,
 }
 
 function NewPoll() {
