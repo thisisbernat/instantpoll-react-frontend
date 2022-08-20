@@ -84,6 +84,7 @@ function NewPoll() {
   const [showPen, setShowPen] = useState(false)
 
   const createQuestion = (newQuestion) => {
+    // early return 
     if (questions.length > 0) {
       const lastQ = questions.slice(-1)[0]
       if (!lastQ.isSaved) {
@@ -100,9 +101,7 @@ function NewPoll() {
     setQuestions([...questions, newQuestion])
   }
 
-  const readQuestion = (index) => {
-    return questions[index]
-  }
+  const readQuestion = (index) => questions[index]
 
   const updateQuestion = (index, property, newValue) => {
     let questionsCopy = [...questions]
@@ -136,10 +135,10 @@ function NewPoll() {
   }
 
   const CRUD = {
-    createQuestion: createQuestion,
-    readQuestion: readQuestion,
-    updateQuestion: updateQuestion,
-    deleteQuestion: deleteQuestion
+    createQuestion,
+    readQuestion,
+    updateQuestion,
+    deleteQuestion
   }
 
   const saveTitle = () => {
@@ -284,10 +283,9 @@ function NewPoll() {
 
   return (
     <>
-      {/* POLL HEADER */}
       <div className="u-flex u-flex-wrap u-justify-space-between-md u-items-center u-justify-center">
         <h4 className="font-alt text-yellow-400">
-          <div onClick={() => saveTitle()} onMouseEnter={() => setShowPen(true)} onMouseLeave={() => setShowPen(false)} className="click-area">
+          <div onClick={saveTitle} onMouseEnter={() => setShowPen(true)} onMouseLeave={() => setShowPen(false)} className="click-area">
             <font className="dotted">{pollTitle ? pollTitle : 'Edit your poll title here!'}</font> {<FontAwesomeIcon className={showPen ? "text-gray-600 text-lg" : "text-gray-600 text-sm hidden"} icon={faPen} />}
           </div>
         </h4>
@@ -297,8 +295,6 @@ function NewPoll() {
           <button onClick={() => savePoll(true)} className="bg-indigo-800 text-white btn--sm">Publish poll <FontAwesomeIcon icon={faPaperPlane} /></button>
         </div>
       </div>
-      {/***************/}
-
       {questions.map((question, index) => {
         if (!question.isSaved) {
           const ViewType = NewQuestionsMap[question.type]

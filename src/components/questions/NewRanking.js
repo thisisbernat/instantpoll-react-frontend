@@ -127,8 +127,6 @@ function NewRanking(props) {
                 <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
             </form>
             <button className="outline btn-primary btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
-            {/* Question body */}
-
         </div>
     )
 }

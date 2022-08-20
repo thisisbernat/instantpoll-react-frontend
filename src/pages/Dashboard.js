@@ -9,18 +9,14 @@ import Swal from 'sweetalert2'
 
 function Dashboard() {
   const { user } = useContext(AuthContext)
-  const [userId] = useState(user._id)
   const [polls, setPolls] = useState([])
   const [totalSubmissions, setTotalSubmissions] = useState(0)
 
-  const translateDate = (date) => {
-    let yourDate = new Date(date)
-    let newDate = new Intl.DateTimeFormat('en-GB').format(yourDate)
-    return <>{newDate}</>
-  }
+  const formatDate = (date) => new Intl.DateTimeFormat('en-GB').format(new Date(date))
 
   useEffect(() => {
-    getAllPollsService(userId)
+    
+    getAllPollsService(user._id)
       .then(response => {
         setPolls(response.data)
         const total = response.data.reduce((acc, obj) => { 
@@ -29,7 +25,7 @@ function Dashboard() {
         setTotalSubmissions(total)
       })
       .catch(err => console.log(err))
-  }, [userId])
+  }, [user._id])
 
   const publishPoll = (pollId, index) => {
     let confAlert = {
@@ -165,8 +161,7 @@ function Dashboard() {
               return (
                 <tr key={index}>                  
                   <th><Link to={`/poll/${poll._id}`}>{poll.title} <FontAwesomeIcon icon={faUpRightFromSquare} /></Link></th>
-                  <td>{translateDate(poll.createdAt)}</td>
-                  <td>{poll.isPublished ? 'Published' : 'Closed'}</td>
+                  <td>{formatDate(poll.createdAt)}</td>
                   <td>{poll.isPublic ? 'Public' : 'Private'}</td>                  
                   <td>63</td>
                   <td>{poll.submissions}</td>
