@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import {ReactComponent as SingleIcon} from '../../assets/types/single.svg'
-import {ReactComponent as MultipleIcon} from '../../assets/types/multiple.svg'
-import {ReactComponent as RatingIcon} from '../../assets/types/rating.svg'
-import {ReactComponent as OpenIcon} from '../../assets/types/open.svg'
-import {ReactComponent as RankingIcon} from '../../assets/types/ranking.svg'
-import {ReactComponent as ListIcon} from '../../assets/types/list.svg'
-import {ReactComponent as IntroIcon} from '../../assets/types/intro.svg'
-import {ReactComponent as ThanksIcon} from '../../assets/types/thanks.svg'
+import {ReactComponent as SingleIcon} from '../../../assets/types/single.svg'
+import {ReactComponent as MultipleIcon} from '../../../assets/types/multiple.svg'
+import {ReactComponent as RatingIcon} from '../../../assets/types/rating.svg'
+import {ReactComponent as OpenIcon} from '../../../assets/types/open.svg'
+import {ReactComponent as RankingIcon} from '../../../assets/types/ranking.svg'
+import {ReactComponent as ListIcon} from '../../../assets/types/list.svg'
+import {ReactComponent as IntroIcon} from '../../../assets/types/intro.svg'
+import {ReactComponent as ThanksIcon} from '../../../assets/types/thanks.svg'
 
 export default function NewQuestion({index, CRUD: {updateQuestion}}) {
     return (

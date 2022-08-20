@@ -8,16 +8,16 @@ import { faFloppyDisk, faPen, faPaperPlane, faGears } from '@fortawesome/free-so
 import Swal from 'sweetalert2'
 
 
-import NewQuestion from '../components/questions/NewQuestion'
-import NewIntro from '../components/questions/NewIntro'
-import NewList from '../components/questions/NewList'
-import NewMultipleChoice from '../components/questions/NewMultipleChoice'
-import NewRanking from '../components/questions/NewRanking'
-import NewRating from '../components/questions/NewRating'
-import NewSingleChoice from '../components/questions/NewSingleChoice'
-import NewThanks from '../components/questions/NewThanks'
+import NewQuestion from '../components/questions/new/NewQuestion'
+import NewIntro from '../components/questions/new/NewIntro'
+import NewList from '../components/questions/new/NewList'
+import NewMultipleChoice from '../components/questions/new/NewMultipleChoice'
+import NewRanking from '../components/questions/new/NewRanking'
+import NewRating from '../components/questions/new/NewRating'
+import NewSingleChoice from '../components/questions/new/NewSingleChoice'
+import NewThanks from '../components/questions/new/NewThanks'
 import AddQuestion from '../components/questions/AddQuestion'
-import NewOpen from '../components/questions/NewOpen'
+import NewOpen from '../components/questions/new/NewOpen'
 // import NewParagraph from '../components/questions/NewParagraph'
 // import NewLine from '../components/questions/NewLine'
 // import NewDate from '../components/questions/NewDate'
@@ -29,14 +29,14 @@ import NewOpen from '../components/questions/NewOpen'
 
 
 
-import SavedIntro from '../components/questions/SavedIntro'
-import SavedList from '../components/questions/SavedList'
-import SavedMultipleChoice from '../components/questions/SavedMultipleChoice'
-import SavedRanking from '../components/questions/SavedRanking'
-import SavedRating from '../components/questions/SavedRating'
-import SavedSingleChoice from '../components/questions/SavedSingleChoice'
-import SavedThanks from '../components/questions/SavedThanks'
-import SavedOpen from '../components/questions/SavedOpen'
+import SavedIntro from '../components/questions/saved/SavedIntro'
+import SavedList from '../components/questions/saved/SavedList'
+import SavedMultipleChoice from '../components/questions/saved/SavedMultipleChoice'
+import SavedRanking from '../components/questions/saved/SavedRanking'
+import SavedRating from '../components/questions/saved/SavedRating'
+import SavedSingleChoice from '../components/questions/saved/SavedSingleChoice'
+import SavedThanks from '../components/questions/saved/SavedThanks'
+import SavedOpen from '../components/questions/saved/SavedOpen'
 
 const NewQuestionsMap = {
   tbd: NewQuestion,
