@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Swal from "sweetalert2"
+import VoteForm from "../containers/VoteForm"
 
 export default function VoteSingleChoice(props) {
     const { question, nextStep, saveAnswer } = props
@@ -24,7 +25,7 @@ export default function VoteSingleChoice(props) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white u-round-sm u-shadow-lg px-2 py-3 grid-c-4-md">
+        <VoteForm onSubmit={handleSubmit}>
             <h4 className="u-text-center">{question.title}<font className="text-red-700">{question.isCompulsory ? '*' : ''}</font></h4>
             <div className="text-lg u-center mb-1">
                 <ul className="no-bullets">
@@ -34,6 +35,6 @@ export default function VoteSingleChoice(props) {
                 </ul>
             </div>
             <button type="submit" className="bg-teal-600 text-white u-center">Submit answer</button>
-        </form>
+        </VoteForm>
     )
 }

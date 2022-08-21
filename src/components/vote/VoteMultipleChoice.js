@@ -1,15 +1,40 @@
+import { useState } from "react"
+import Swal from "sweetalert2"
+import VoteForm from "../containers/VoteForm"
+
 export default function VoteMultipleChoice(props) {
+    const { question, nextStep, saveAnswer } = props
+    const [answer, setAnswer] = useState(null)
+
+    const handleFormChange = (e) => {
+        setAnswer(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if (question.isCompulsory && !answer) {
+            Swal.fire('Answering to this question is compulsory')
+            return
+        }
+        if (answer) {
+            saveAnswer({ 'choices': answer })
+            setAnswer(null)
+        } else if (!answer) {
+            nextStep()
+        }
+    }
+
     return (
-        <div className="bg-white u-round-sm u-shadow-lg px-2 py-3 grid-c-4-md">
-            <h4 className="u-text-center">What's your favourite language?</h4>
+        <VoteForm onSubmit={handleSubmit}>
+            <h4 className="u-text-center">{question.title}<font className="text-red-700">{question.isCompulsory ? '*' : ''}</font></h4>
             <div className="text-lg u-center mb-1">
                 <ul className="no-bullets">
-                    <li><label className="pointer"><input type="checkbox" name="house" /> JavaScript</label></li>
-                    <li><label className="pointer"><input type="checkbox" name="house" /> TypeScript</label></li>
-                    <li><label className="pointer"><input type="checkbox" name="house" /> Both</label></li>
+                    {question.options.map((option, optionIndex) => {
+                        return <li key={`${option}-${optionIndex}`}><label className="pointer"><input type="checkbox" name="option" value={option} onChange={e => handleFormChange(e)} /> {option}</label></li>
+                    })}
                 </ul>
             </div>
-            <button className="bg-green-600 text-white u-center">Submit</button>
-        </div>
+            <button type="submit" className="bg-teal-600 text-white u-center">Submit answer</button>
+        </VoteForm>
     )
 }
