@@ -8,7 +8,6 @@ import Swal from 'sweetalert2'
 
 import VoteList from '../components/vote/VoteList'
 import VoteIntro from '../components/vote/VoteIntro'
-import VoteThanks from '../components/vote/VoteThanks'
 import VoteMultipleChoice from '../components/vote/VoteMultipleChoice'
 import VoteOpenDate from '../components/vote/VoteDate'
 import VoteOpenEmail from '../components/vote/VoteEmail'
@@ -36,7 +35,7 @@ const VoteQuestionsMap = {
   rating: VoteRating,
   ranking: VoteRanking,
   list: VoteList,
-  thanks: VoteThanks,
+  thanks: VoteIntro,
   saving: SavingResults
 }
 
