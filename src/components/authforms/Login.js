@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 
-function Login(props) {
+export default function Login(props) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState(undefined)
@@ -52,5 +52,3 @@ function Login(props) {
         </div>
     )
 }
-
-export default Login

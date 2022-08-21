@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 
 const URL = window.location.href
 
-function Share(props) {
+export default function Share(props) {
 
     const showQR = () => {
         Swal.fire({
@@ -31,5 +31,3 @@ function Share(props) {
     )
 
 }
-
-export default Share

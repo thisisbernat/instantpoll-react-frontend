@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOn, faToggleOff, faGrip, faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-function NewList(props) {
+export default function NewList(props) {
     const { index, CRUD, question } = props
     const savedTitle = question.title
     const savedListNumber = question.listNumber
@@ -97,5 +97,3 @@ function NewList(props) {
         </div>
     )
 }
-
-export default NewList

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock, faUser, faAddressCard, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 
-function Signup(props) {
+export default function Signup(props) {
     const [firstname, setFirstName] = useState('')
     const [lastname, setLastName] = useState('')
     const [username, setUsername] = useState('')
@@ -73,5 +73,3 @@ function Signup(props) {
         </div>
     )
 }
-
-export default Signup

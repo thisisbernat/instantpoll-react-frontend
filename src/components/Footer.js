@@ -2,7 +2,7 @@ import SymbolLight from '../assets/img/symbolLight.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
-function Footer(props) {
+export default function Footer(props) {
     return (    
         <footer className="bg-gray-700 text-gray-000 u-flex u-flex-column u-items-center pt-4 pb-3">
             <img src={SymbolLight} style={{width:"3rem"}} alt="InstantPoll symbol"/>
@@ -12,5 +12,3 @@ function Footer(props) {
         </footer>
     )
 }
-
-export default Footer

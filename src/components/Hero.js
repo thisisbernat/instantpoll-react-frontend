@@ -1,7 +1,7 @@
 import {ReactComponent as SymbolDarkest} from '../assets/img/symbolDarkest.svg'
 import { Link } from "react-router-dom"
 
-function Hero(props) {
+export default function Hero(props) {
     return (
         <div className="hero">
             <div className="hero-body">
@@ -19,5 +19,3 @@ function Hero(props) {
         </div>
     )
 }
-
-export default Hero

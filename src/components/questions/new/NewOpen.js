@@ -7,7 +7,7 @@ import {ReactComponent as NumberIcon} from '../../../assets/types/open/number.sv
 import {ReactComponent as PhoneIcon} from '../../../assets/types/open/phone.svg'
 import {ReactComponent as SingleLineIcon} from '../../../assets/types/open/single-line.svg'
 
-function NewOpen(props) {
+export default function NewOpen(props) {
     const { index, CRUD } = props
     const { updateQuestion } = CRUD
 
@@ -60,5 +60,3 @@ function NewOpen(props) {
         </div>
     )
 }
-
-export default NewOpen

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOn, faCircleDot, faGrip, faPen } from '@fortawesome/free-solid-svg-icons'
 
-function SavedSingleQuestion(props) {
+export default function SavedSingleQuestion(props) {
     const { index, CRUD, question } = props
     const { updateQuestion } = CRUD
 
@@ -42,5 +42,3 @@ function SavedSingleQuestion(props) {
         </div>
     )
 }
-
-export default SavedSingleQuestion

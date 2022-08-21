@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 
-function SavedThanks(props) {
+export default function SavedThanks(props) {
     const { index, CRUD, question } = props
     const { title, message, buttonText } = question
     const { updateQuestion } = CRUD
@@ -43,5 +43,3 @@ function SavedThanks(props) {
         </div>
     )
 }
-
-export default SavedThanks

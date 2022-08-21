@@ -7,7 +7,7 @@ import { AuthContext } from "../context/auth.context"
 import Swal from 'sweetalert2'
 
 
-function Dashboard() {
+export default function Dashboard() {
   const { user } = useContext(AuthContext)
   const [polls, setPolls] = useState([])
   const [totalSubmissions, setTotalSubmissions] = useState(0)
@@ -182,5 +182,3 @@ function Dashboard() {
     </>
   )
 }
-
-export default Dashboard

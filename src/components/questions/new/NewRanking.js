@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faCirclePlus, faGrip, faPen, faToggleOn, faTrashCan, faCircleDot } from '@fortawesome/free-solid-svg-icons'
 
-function NewRanking(props) {
+export default function NewRanking(props) {
     const { index, CRUD, question } = props
     const savedTitle = question.title
     const savedOptions = question.options
@@ -130,5 +130,3 @@ function NewRanking(props) {
         </div>
     )
 }
-
-export default NewRanking

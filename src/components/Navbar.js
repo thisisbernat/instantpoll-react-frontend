@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { AuthContext } from "../context/auth.context"
 
 
-function Navbar(props) {
+export default function Navbar(props) {
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
     const [isMenuOpen, setMenuOpen] = useState("false")
     const [isDropdownOpen, setDropdownOpen] = useState("false")
@@ -62,5 +62,3 @@ function Navbar(props) {
         </header >
     )
 }
-
-export default Navbar

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquare, faToggleOn, faGrip, faPen } from '@fortawesome/free-solid-svg-icons'
 
-function SavedMultipleChoice(props) {
+export default function SavedMultipleChoice(props) {
 	const { index, CRUD, question } = props
     const { updateQuestion } = CRUD
 
@@ -43,5 +43,3 @@ function SavedMultipleChoice(props) {
 		</div>
 	)
 }
-
-export default SavedMultipleChoice

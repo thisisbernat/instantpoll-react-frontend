@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 
-function NewThanks(props) {
+export default function NewThanks(props) {
     const { index, CRUD, question } = props
     const savedTitle = question.title
     const savedMessage = question.message
@@ -120,5 +120,3 @@ function NewThanks(props) {
         </div>
     )
 }
-
-export default NewThanks

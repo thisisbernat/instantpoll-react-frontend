@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen, faStar } from '@fortawesome/free-solid-svg-icons'
 
-function NewRating(props) {
+export default function NewRating(props) {
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-3 pt-2 pb-1">
             {/* Question header */}
@@ -23,5 +23,3 @@ function NewRating(props) {
         </div>
     )
 }
-
-export default NewRating

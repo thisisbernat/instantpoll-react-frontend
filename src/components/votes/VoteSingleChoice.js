@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Swal from "sweetalert2"
 
-function VoteSingleChoice(props) {
+export default function VoteSingleChoice(props) {
     const { question, nextStep, saveAnswer } = props
     const [answer, setAnswer] = useState(null)
 
@@ -37,5 +37,3 @@ function VoteSingleChoice(props) {
         </form>
     )
 }
-
-export default VoteSingleChoice

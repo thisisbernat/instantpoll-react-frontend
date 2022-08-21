@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faToggleOn, faGrip, faPen, faStar, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-function NewRating(props) {
+export default function NewRating(props) {
     const { index, CRUD, question } = props
     const savedTitle = question.title
     const savedIsCompulsory = question.isCompulsory
@@ -90,5 +90,3 @@ function NewRating(props) {
         </div>
     )
 }
-
-export default NewRating

@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faToggleOn, faCircleDot, faGrip, faPen, faCirclePlus, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-function NewSigleChoice(props) {
+export default function NewSigleChoice(props) {
     const { index, CRUD, question } = props
     const savedTitle = question.title
     const savedOptions = question.options
@@ -132,5 +132,3 @@ function NewSigleChoice(props) {
         </div>
     )
 }
-
-export default NewSigleChoice

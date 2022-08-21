@@ -1,4 +1,4 @@
-function VoteIntro(props) {
+export default function VoteIntro(props) {
   const { question, nextStep } = props
   return (
     <div className="bg-white u-round-sm u-shadow-lg px-2 py-5-md py-3 grid-c-4-md">
@@ -10,5 +10,3 @@ function VoteIntro(props) {
     </div>
   )
 }
-
-export default VoteIntro

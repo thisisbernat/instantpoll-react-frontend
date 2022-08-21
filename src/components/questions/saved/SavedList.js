@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen } from '@fortawesome/free-solid-svg-icons'
 
-function SavedList(props) {
+export default function SavedList(props) {
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-3 pt-2 pb-1">
             {/* Question header */}
@@ -25,5 +25,3 @@ function SavedList(props) {
         </div>
     )
 }
-
-export default SavedList

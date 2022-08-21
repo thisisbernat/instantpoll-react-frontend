@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-function SavingResults(props) {
+export default function SavingResults(props) {
     const { nextStep } = props
     useEffect(() => {
         nextStep()
@@ -13,5 +13,3 @@ function SavingResults(props) {
         </div>
     )
 }
-
-export default SavingResults

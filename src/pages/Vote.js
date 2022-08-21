@@ -40,7 +40,7 @@ const VoteQuestionsMap = {
   saving: SavingResults
 }
 
-function Vote() {
+export default function Vote() {
   const { id } = useParams()
   const [pollId] = useState(id)
   let navigate = useNavigate()
@@ -114,5 +114,3 @@ function Vote() {
     </div>
   )
 }
-
-export default Vote

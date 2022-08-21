@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen } from '@fortawesome/free-solid-svg-icons'
 
-function SavedIntro(props) {
+export default function SavedIntro(props) {
     const { index, CRUD, question } = props
     const { title, message, buttonText } = question
     const { updateQuestion } = CRUD
@@ -41,5 +41,3 @@ function SavedIntro(props) {
         </div>
     )
 }
-
-export default SavedIntro

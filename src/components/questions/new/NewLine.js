@@ -1,10 +1,9 @@
 import { faGrip, faPen, faToggleOff, faToggleOn, faTrashCan } from '@fortawesome/free-solid-svg-icons'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Swal from 'sweetalert2'
 import { useState } from "react"
 
-function NewLine(props) {
+export default function NewLine(props) {
   const { index, CRUD: {updateQuestion, deleteQuestion}, question } = props
   const [title, setTitle] = useState(question.title)
   const [showPen, setShowPen] = useState(false)
@@ -81,5 +80,3 @@ function NewLine(props) {
     </div>
   )
 }
-
-export default NewLine

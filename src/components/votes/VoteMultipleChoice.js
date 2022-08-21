@@ -1,4 +1,4 @@
-function VoteMultipleChoice(props) {
+export default function VoteMultipleChoice(props) {
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-2 py-3 grid-c-4-md">
             <h4 className="u-text-center">What's your favourite language?</h4>
@@ -13,5 +13,3 @@ function VoteMultipleChoice(props) {
         </div>
     )
 }
-
-export default VoteMultipleChoice

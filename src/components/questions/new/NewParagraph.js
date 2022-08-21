@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Swal from 'sweetalert2'
 import { useState } from "react"
 
-function NewParagraph(props) {
+export default function NewParagraph(props) {
   const { index, CRUD: {updateQuestion, deleteQuestion}, question } = props
   const [title, setTitle] = useState(question.title)
   const [showPen, setShowPen] = useState(false)
@@ -81,5 +81,3 @@ function NewParagraph(props) {
     </div>
   )
 }
-
-export default NewParagraph
