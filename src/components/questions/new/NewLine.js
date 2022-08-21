@@ -56,7 +56,7 @@ function NewLine(props) {
         <FontAwesomeIcon className="text-gray-600 grip top-grip" icon={faGrip} />
         <div className="u-absolute-md u-left-0 u-right-0">
           <div className="u-flex u-flex-row-md u-justify-space-between-md u-items-center u-flex-column">
-            <em className="font-bold">Open question (paragraph)</em>
+            <em className="font-bold">Open question (single line)</em>
             <div className="u-flex u-gap-1 text-xs text-gray-800">
               {isCompulsory ?
                 (
@@ -73,7 +73,7 @@ function NewLine(props) {
           <font className="dotted">{title ? `${title}${isCompulsory ? '*' : ''}` : <>Edit your title here!{isCompulsory && '*'}</>}</font> {<FontAwesomeIcon className={showPen ? "text-gray-600 text-sm" : "text-gray-600 text-sm hidden"} icon={faPen} />}
         </div>
       </div>
-      <textarea disabled style={{ cursor: "default", resize: "none" }} className="max-w-50p u-center" placeholder="The user will be able to provide a whole paragraph as an answer"></textarea>
+      <input disabled style={{ cursor: "default", resize: "none" }} className="max-w-50p u-center input--sm" placeholder="The user will be able to provide a single line as an answer"></input>
       <form onSubmit={saveQuestion}>
         <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
       </form>

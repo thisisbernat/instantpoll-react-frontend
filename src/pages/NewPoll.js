@@ -76,7 +76,7 @@ const SavedQuestionsMap = {
   phone: SavedPhone
 }
 
-function NewPoll() {
+export default function NewPoll() {
   const { user } = useContext(AuthContext)
   let navigate = useNavigate()
 
@@ -320,5 +320,3 @@ function NewPoll() {
     </>
   )
 }
-
-export default NewPoll

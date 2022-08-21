@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Swal from 'sweetalert2'
 import { useState } from "react"
 
-function NewEmail(props) {
+export default function NewEmail(props) {
   const { index, CRUD: {updateQuestion, deleteQuestion}, question } = props
   const [title, setTitle] = useState(question.title)
   const [showPen, setShowPen] = useState(false)
@@ -56,7 +56,7 @@ function NewEmail(props) {
         <FontAwesomeIcon className="text-gray-600 grip top-grip" icon={faGrip} />
         <div className="u-absolute-md u-left-0 u-right-0">
           <div className="u-flex u-flex-row-md u-justify-space-between-md u-items-center u-flex-column">
-            <em className="font-bold">Open question (paragraph)</em>
+            <em className="font-bold">Open question (email)</em>
             <div className="u-flex u-gap-1 text-xs text-gray-800">
               {isCompulsory ?
                 (
@@ -73,7 +73,7 @@ function NewEmail(props) {
           <font className="dotted">{title ? `${title}${isCompulsory ? '*' : ''}` : <>Edit your title here!{isCompulsory && '*'}</>}</font> {<FontAwesomeIcon className={showPen ? "text-gray-600 text-sm" : "text-gray-600 text-sm hidden"} icon={faPen} />}
         </div>
       </div>
-      <textarea disabled style={{ cursor: "default", resize: "none" }} className="max-w-50p u-center" placeholder="The user will be able to provide a whole paragraph as an answer"></textarea>
+      <input disabled type="email" placeholder="example@email.io" className="u-center" style={{ maxWidth: "250px" }} />
       <form onSubmit={saveQuestion}>
         <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
       </form>
@@ -81,5 +81,3 @@ function NewEmail(props) {
     </div>
   )
 }
-
-export default NewEmail

@@ -1,10 +1,9 @@
 import { faGrip, faPen, faToggleOff, faToggleOn, faTrashCan } from '@fortawesome/free-solid-svg-icons'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Swal from 'sweetalert2'
 import { useState } from "react"
 
-function NewDate(props) {
+export default function NewDate(props) {
   const { index, CRUD: {updateQuestion, deleteQuestion}, question } = props
   const [title, setTitle] = useState(question.title)
   const [showPen, setShowPen] = useState(false)
@@ -56,7 +55,7 @@ function NewDate(props) {
         <FontAwesomeIcon className="text-gray-600 grip top-grip" icon={faGrip} />
         <div className="u-absolute-md u-left-0 u-right-0">
           <div className="u-flex u-flex-row-md u-justify-space-between-md u-items-center u-flex-column">
-            <em className="font-bold">Open question (paragraph)</em>
+            <em className="font-bold">Open question (date)</em>
             <div className="u-flex u-gap-1 text-xs text-gray-800">
               {isCompulsory ?
                 (
@@ -73,7 +72,7 @@ function NewDate(props) {
           <font className="dotted">{title ? `${title}${isCompulsory ? '*' : ''}` : <>Edit your title here!{isCompulsory && '*'}</>}</font> {<FontAwesomeIcon className={showPen ? "text-gray-600 text-sm" : "text-gray-600 text-sm hidden"} icon={faPen} />}
         </div>
       </div>
-      <textarea disabled style={{ cursor: "default", resize: "none" }} className="max-w-50p u-center" placeholder="The user will be able to provide a whole paragraph as an answer"></textarea>
+      <input disabled type="date" className="u-center" style={{ maxWidth: "180px" }} />
       <form onSubmit={saveQuestion}>
         <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
       </form>
@@ -81,5 +80,3 @@ function NewDate(props) {
     </div>
   )
 }
-
-export default NewDate
