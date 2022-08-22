@@ -1,27 +1,34 @@
-import { useState } from "react"
 import Swal from "sweetalert2"
 import VoteForm from "../containers/VoteForm"
 
 export default function VoteMultipleChoice(props) {
     const { question, nextStep, saveAnswer } = props
-    const [answer, setAnswer] = useState(null)
-
-    const handleFormChange = (e) => {
-        setAnswer(e.target.value)
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (question.isCompulsory && !answer) {
-            Swal.fire('Answering to this question is compulsory')
+     
+        const answersArray = []
+        for (let i = 0; i < e.target.length - 1; i++) {
+            if ((e.target[i]).checked) {
+                answersArray.push((e.target[i]).value)
+            }
+        }
+
+        const numberOfAnswers = answersArray.reduce((previousValue, currentValue) => {
+            if (currentValue !== '') { return previousValue + 1 }
+            else { return previousValue }
+        }, 0)
+
+        if (question.isCompulsory && (numberOfAnswers <= 0)) {
+            Swal.fire('You must provide an answers')
             return
         }
-        if (answer) {
-            saveAnswer({ 'choices': answer })
-            setAnswer(null)
-        } else if (!answer) {
-            nextStep()
+
+        if (numberOfAnswers > 0) {
+            saveAnswer({ 'choices': answersArray })
         }
+
+        nextStep()
     }
 
     return (
@@ -30,7 +37,7 @@ export default function VoteMultipleChoice(props) {
             <div className="text-lg u-center mb-1">
                 <ul className="no-bullets">
                     {question.options.map((option, optionIndex) => {
-                        return <li key={`${option}-${optionIndex}`}><label className="pointer"><input type="checkbox" name="option" value={option} onChange={e => handleFormChange(e)} /> {option}</label></li>
+                        return <li key={`${option}-${optionIndex}`}><label className="pointer"><input type="checkbox" name="option" value={option} /> {option}</label></li>
                     })}
                 </ul>
             </div>
