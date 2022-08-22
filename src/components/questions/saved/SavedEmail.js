@@ -24,7 +24,7 @@ export default function SavedEmail(props) {
       <div className="p-1 px-10-md u-text-center mt-3">
         <div className="mx-24-md p-4 u-round-sm u-shadow-md" style={{ border: "solid 1px lightgrey" }}>
           <h4>{title}<font className="text-red-700">{isCompulsory ? '*' : ''}</font></h4>
-          <input disabled type="email" placeholder="example@email.io" className="u-center" style={{ maxWidth: "250px" }} />
+          <input disabled type="email" placeholder="example@email.io" className="u-center" style={{ maxWidth: "250px", cursor: "default" }} />
         </div>
       </div>
       <button onClick={handleEdit} className="bg-teal-600 text-white btn--sm u-pull-right mr-1">Edit <FontAwesomeIcon icon={faPen} /></button>
