@@ -22,8 +22,10 @@ export default function VoteList(props) {
       return
     }
 
-    console.log(answersArray)
-    saveAnswer({ 'list': answersArray })
+    if (numberOfAnswers > 0) {
+      saveAnswer({ 'list': answersArray })
+    }
+    
     nextStep()
   }
 
