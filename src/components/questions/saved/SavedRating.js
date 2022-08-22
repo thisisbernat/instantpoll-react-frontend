@@ -2,8 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faGrip, faPen, faStar } from '@fortawesome/free-solid-svg-icons'
 
 export default function NewRating(props) {
-    const { index, CRUD, question } = props
-    const { updateQuestion } = CRUD
+    const { index, CRUD: {updateQuestion}, question } = props
 
     const handleEdit = (e) => {
         e.preventDefault()
