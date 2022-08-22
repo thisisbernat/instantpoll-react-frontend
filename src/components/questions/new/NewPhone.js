@@ -72,7 +72,7 @@ export default function NewPhone(props) {
           <font className="dotted">{title ? `${title}${isCompulsory ? '*' : ''}` : <>Edit your title here!{isCompulsory && '*'}</>}</font> {<FontAwesomeIcon className={showPen ? "text-gray-600 text-sm" : "text-gray-600 text-sm hidden"} icon={faPen} />}
         </div>
       </div>
-      <input disabled type="tel" placeholder="+66 666666666" className="u-center" style={{ maxWidth: "180px" }} />
+      <input disabled type="tel" placeholder="+66 666666666" className="u-center" style={{ maxWidth: "180px", cursor: "default" }} />
       <form onSubmit={saveQuestion}>
         <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
       </form>
