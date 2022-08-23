@@ -4,7 +4,7 @@ import MainContainer from './components/containers/MainC'
 import PageContainer from './components/containers/PageC'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Hero from './components/Hero'
+import Main from './components/Main'
 import Signup from './components/authforms/Signup'
 import Login from './components/authforms/Login'
 import NewPoll from './pages/NewPoll'
@@ -19,7 +19,7 @@ function App() {
 			<Navbar />
 			<MainContainer>
 				<Routes>
-					<Route path="/" element={<Hero />} />
+					<Route path="/" element={<Main />} />
 
 					<Route exact path="/signup" element={
 						<AnonRoute>
@@ -51,7 +51,7 @@ function App() {
 
 					{/* <Route exact path="/profile" element={
 						<AnonRoute>
-							<Hero />
+							<Main />
 						</AnonRoute>
 					} /> */}
 
