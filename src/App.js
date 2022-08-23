@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard'
 import Vote from './pages/Vote'
 import PrivateRoute from './components/PrivateRoute'
 import AnonRoute from './components/AnonRoute'
+import Dnd from './pages/dnd'
 
 function App() {
 	return (
@@ -31,6 +32,10 @@ function App() {
 						<AnonRoute>
 							<Login />
 						</AnonRoute>
+					} />
+
+					<Route exact path="/dnd" element={
+							<Dnd />
 					} />
 
 					<Route exact path="/new" element={
@@ -59,7 +64,7 @@ function App() {
 						<PageContainer>
 							<Vote />
 						</PageContainer>
-						
+
 					} />
 				</Routes>
 			</MainContainer>
