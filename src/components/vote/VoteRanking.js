@@ -17,7 +17,6 @@ export default function VoteRanking(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(answer)
         if (question.isCompulsory && !answer) {
             Swal.fire('Answering to this question is compulsory')
             return
