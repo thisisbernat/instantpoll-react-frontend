@@ -14,6 +14,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "analytics": "^0.8.1",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.1",
     "cirrus-ui": "^0.7.0-patch.1",
@@ -25,6 +26,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.3",
     "sweetalert2": "^11.4.24",
+    "use-analytics": "^0.0.5",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

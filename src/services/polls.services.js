@@ -7,9 +7,19 @@ const getAllPollsService = (userId) => {
 	return service.get(`${URL}/${userId}`)
 }
 
+// GET POLL STATUS
+const getPollStatusService = (id) => {
+	return service.get(`${URL}/status/${id}`)
+}
+
 // ADD NEW POLL
 const addNewPollService = (newPoll) => {
 	return service.post(`${URL}/`, newPoll)
+}
+
+// ADD VIEW TO POLL
+const addNewViewService = (id, visitId) => {
+	return service.post(`${URL}/views/${id}`, {visitId})
 }
 
 // UPDATE POLL (FULL UPDATE)
@@ -27,4 +37,4 @@ const deletePollService = (id) => {
 	return service.delete(`${URL}/${id}`)
 }
 
-export { getAllPollsService, addNewPollService, updatePollService, deletePollService, updatePatchPollService }
+export { getAllPollsService, addNewPollService, updatePollService, deletePollService, updatePatchPollService, addNewViewService, getPollStatusService }

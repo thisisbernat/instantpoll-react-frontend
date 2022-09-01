@@ -11,6 +11,7 @@ export default function Dashboard() {
   const { user } = useContext(AuthContext)
   const [polls, setPolls] = useState([])
   const [totalSubmissions, setTotalSubmissions] = useState(0)
+  const [totalViews, setTotalViews] = useState(0)
 
   const formatDate = (date) => new Intl.DateTimeFormat('en-GB').format(new Date(date))
 
@@ -19,10 +20,14 @@ export default function Dashboard() {
     getAllPollsService(user._id)
       .then(response => {
         setPolls(response.data)
-        const total = response.data.reduce((acc, obj) => { 
+        const reduceSubmissions = response.data.reduce((acc, obj) => { 
           return acc + obj.submissions 
         }, 0)
-        setTotalSubmissions(total)
+        setTotalSubmissions(reduceSubmissions)
+        const reduceViews = response.data.reduce((acc, obj) => { 
+          return acc + obj.views 
+        }, 0)
+        setTotalViews(reduceViews)
       })
       .catch(err => console.log(err))
   }, [user._id])
@@ -118,7 +123,7 @@ export default function Dashboard() {
         </div>
         <div className="bg-white u-round-sm u-shadow-lg px-2 py-3 u-flex u-flex-column u-items-center u-gap-5">
           <div className="p-1 bg-green-500 text-gray-000 u-center circle"><FontAwesomeIcon icon={faEye} /></div>
-          <h1 className="my-0">15</h1>
+          <h1 className="my-0">{totalViews}</h1>
           <h4 className="my-0">Views</h4>
         </div>
         <div className="bg-white u-round-sm u-shadow-lg px-2 py-3 u-flex u-flex-column u-items-center u-gap-5">
@@ -164,8 +169,9 @@ export default function Dashboard() {
                   <td>{formatDate(poll.createdAt)}</td>
                   <td>{poll.isPublic ? 'Public' : 'Private'}</td>                  
                   <td>63</td>
+                  <td>{poll.views}</td>
                   <td>{poll.submissions}</td>
-                  <td>81%</td>
+                  <td>{Math.round((poll.submissions / poll.views)*100)+'%'}</td>
                   <td>{poll.isPublished ? <button onClick={() => closePoll(poll._id, index)} className="btn--sm outline text-gray-700 py-0" title="Close poll"><FontAwesomeIcon icon={faDoorClosed} /></button> : <button onClick={() => publishPoll(poll._id, index)} className="btn--sm outline btn-dark py-0" title="Publish poll"><FontAwesomeIcon icon={faPaperPlane} /></button>}</td>
                   <td><button onClick={() => deletePoll(poll._id, index)} className="btn--sm outline btn-primary py-0" title="Delete poll"><FontAwesomeIcon icon={faTrashCan} /></button></td>
                 </tr>

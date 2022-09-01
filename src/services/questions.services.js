@@ -7,7 +7,6 @@ const getAllQuestionsService = (pollId) => {
 	return service.get(`${URL}/${pollId}`)
 }
 
-
 // ADD NEW QUESTION
 const addNewQuestionService = (newQuestion) => {
 	return service.post(`${URL}/`, newQuestion)

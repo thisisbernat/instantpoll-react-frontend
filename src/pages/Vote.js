@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { useAnalytics } from 'use-analytics'
 // import { AuthContext } from "../context/auth.context"
 import { addNewAnswerService } from '../services/answers.services.js'
 import { getAllQuestionsService } from '../services/questions.services.js'
-import { updatePatchPollService } from '../services/polls.services.js'
+import { updatePatchPollService, getPollStatusService } from '../services/polls.services.js'
 import Swal from 'sweetalert2'
 
 import VoteList from '../components/vote/VoteList'
@@ -43,13 +44,14 @@ export default function Vote() {
   const { id } = useParams()
   const [pollId] = useState(id)
   let navigate = useNavigate()
+  const { page } = useAnalytics()
 
   const sampleQuestion = {
     title: 'Sample title',
     type: 'intro',
     message: 'Sample message',
     buttonText: 'ok'
-  } 
+  }
 
   const [questions, setQuestions] = useState([sampleQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -57,6 +59,13 @@ export default function Vote() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+
+      ; (async (parameters) => {
+        const pollStatus = await getPollStatusService(pollId)
+        if (pollStatus.data.isPublished) {
+          page()
+        }
+      })(pollId)
 
     getAllQuestionsService(pollId)
       .then(response => {
@@ -68,28 +77,28 @@ export default function Vote() {
           }
           return 0
         })
-        setQuestions([...sortedQuestions, {type: 'saving'}])
+        setQuestions([...sortedQuestions, { type: 'saving' }])
       })
       .catch(err => console.log(err))
   }, [pollId])
 
   const nextStep = () => {
-    if (currentIndex + 1 === questions.length) {     
+    if (currentIndex + 1 === questions.length) {
       answers.forEach(answer => {
         addNewAnswerService(answer)
       })
-      updatePatchPollService(questions[0].parentPoll, { $inc: {submissions: 1} })
+      updatePatchPollService(questions[0].parentPoll, { $inc: { submissions: 1 } })
       Swal.fire({
         icon: 'success',
         html: 'Thank you for your participation<br /><strong>InstantPoll</strong>',
-        customClass: { confirmButton: 'text-white bg-teal-600'}
+        customClass: { confirmButton: 'text-white bg-teal-600' }
       })
-      .then(() => navigate("/"))
-      .catch(err => console.log(err))      
-    } 
+        .then(() => navigate("/"))
+        .catch(err => console.log(err))
+    }
     else {
       setCurrentIndex(currentIndex + 1)
-    }    
+    }
   }
 
   const showQuestion = () => {
@@ -100,7 +109,7 @@ export default function Vote() {
   const saveAnswer = async (currentAnswer) => {
     currentAnswer.parentQuestion = questions[currentIndex]._id
     currentAnswer.replierEmail = 'test@test.com'
-    setAnswers([...answers, currentAnswer])    
+    setAnswers([...answers, currentAnswer])
     nextStep()
   }
 
