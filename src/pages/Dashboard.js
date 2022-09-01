@@ -167,8 +167,8 @@ export default function Dashboard() {
                 <tr key={index}>                  
                   <th><Link to={`/poll/${poll._id}`}>{poll.title} <FontAwesomeIcon icon={faUpRightFromSquare} /></Link></th>
                   <td>{formatDate(poll.createdAt)}</td>
-                  <td>{poll.isPublic ? 'Public' : 'Private'}</td>                  
-                  <td>63</td>
+                  <td>{poll.isPublished ? 'Published' : 'Saved'}</td>                  
+                  <td>{poll.isPublic ? 'Public' : 'Private'}</td>  
                   <td>{poll.views}</td>
                   <td>{poll.submissions}</td>
                   <td>{Math.round((poll.submissions / poll.views)*100)+'%'}</td>
