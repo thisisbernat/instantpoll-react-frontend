@@ -9,14 +9,14 @@ import Swal from 'sweetalert2'
 
 export default function Dashboard() {
   const { user } = useContext(AuthContext)
+  console.log(user)
   const [polls, setPolls] = useState([])
   const [totalSubmissions, setTotalSubmissions] = useState(0)
   const [totalViews, setTotalViews] = useState(0)
 
   const formatDate = (date) => new Intl.DateTimeFormat('en-GB').format(new Date(date))
 
-  useEffect(() => {
-    
+  useEffect(() => {    
     getAllPollsService(user._id)
       .then(response => {
         setPolls(response.data)
@@ -151,6 +151,7 @@ export default function Dashboard() {
           <thead>
             <tr>
               <th>Name</th>
+              <th><abbr title="Results">Results</abbr></th>
               <th><abbr title="Creation date">Creation</abbr></th>
               <th><abbr title="Published/Saved">Status</abbr></th>  
               <th><abbr title="Public/Private">Visibility</abbr></th>                      
@@ -166,6 +167,7 @@ export default function Dashboard() {
               return (
                 <tr key={index}>                  
                   <th><Link to={`/poll/${poll._id}`}>{poll.title} <FontAwesomeIcon icon={faUpRightFromSquare} /></Link></th>
+                  <td><Link to={`/results/${poll._id}`}>link</Link></td>
                   <td>{formatDate(poll.createdAt)}</td>
                   <td>{poll.isPublished ? 'Published' : 'Saved'}</td>                  
                   <td>{poll.isPublic ? 'Public' : 'Private'}</td>  

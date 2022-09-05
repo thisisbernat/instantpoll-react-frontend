@@ -10,6 +10,7 @@ import Login from './components/authforms/Login'
 import NewPoll from './pages/NewPoll'
 import Dashboard from './pages/Dashboard'
 import Vote from './pages/Vote'
+import Results from './pages/Results'
 import PrivateRoute from './components/PrivateRoute'
 import AnonRoute from './components/AnonRoute'
 import Dnd from './pages/dnd'
@@ -35,7 +36,7 @@ function App() {
 					} />
 
 					<Route exact path="/dnd" element={
-							<Dnd />
+						<Dnd />
 					} />
 
 					<Route exact path="/new" element={
@@ -54,18 +55,19 @@ function App() {
 						</PrivateRoute>
 					} />
 
-					{/* <Route exact path="/profile" element={
-						<AnonRoute>
-							<Main />
-						</AnonRoute>
-					} /> */}
-
 					<Route exact path="/poll/:id" element={
 						<PageContainer>
 							<Vote />
 						</PageContainer>
-
 					} />
+
+					<Route exact path="/results/:id" element={
+						<PageContainer>
+							<Results />
+						</PageContainer>
+					} />
+
+
 				</Routes>
 			</MainContainer>
 			<Footer />

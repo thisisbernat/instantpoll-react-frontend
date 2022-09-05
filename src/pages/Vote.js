@@ -108,7 +108,7 @@ export default function Vote() {
 
   const saveAnswer = async (currentAnswer) => {
     currentAnswer.parentQuestion = questions[currentIndex]._id
-    currentAnswer.replierEmail = 'test@test.com'
+    currentAnswer.replierEmail = 'anonymous@email.instantpoll'
     setAnswers([...answers, currentAnswer])
     nextStep()
   }
