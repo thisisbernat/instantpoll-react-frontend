@@ -12,6 +12,11 @@ const getAllQuestionsFromPollService = (pollId) => {
 	return service.get(`${URL}/${pollId}/questions`)
 }
 
+// GET POLL CSV
+const getCsvPollService = (pollId) => {
+	return service.get(`${URL}/csv/${pollId}/`)
+}
+
 // GET POLL STATUS
 const getPollStatusService = (id) => {
 	return service.get(`${URL}/status/${id}`)
@@ -24,7 +29,7 @@ const addNewPollService = (newPoll) => {
 
 // ADD VIEW TO POLL
 const addNewViewService = (id, visitId) => {
-	return service.post(`${URL}/views/${id}`, {visitId})
+	return service.post(`${URL}/views/${id}`, { visitId })
 }
 
 // UPDATE POLL (FULL UPDATE)
@@ -42,4 +47,4 @@ const deletePollService = (id) => {
 	return service.delete(`${URL}/${id}`)
 }
 
-export { getAllPollsService, addNewPollService, updatePollService, deletePollService, updatePatchPollService, addNewViewService, getPollStatusService, getAllQuestionsFromPollService }
+export { getAllPollsService, addNewPollService, updatePollService, deletePollService, updatePatchPollService, addNewViewService, getPollStatusService, getAllQuestionsFromPollService, getCsvPollService }

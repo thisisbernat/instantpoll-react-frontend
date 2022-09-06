@@ -19,6 +19,7 @@
     "bootstrap": "^5.1.1",
     "chart.js": "^3.9.1",
     "cirrus-ui": "^0.7.0-patch.1",
+    "js-file-download": "^0.4.12",
     "moment": "^2.29.4",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",

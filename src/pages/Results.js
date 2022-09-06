@@ -4,10 +4,11 @@ import ResultRanking from '../components/results/ResultRanking.js'
 import ResultOpen from '../components/results/ResultOpen.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileCsv, faSquarePollVertical, faEye, faPersonChalkboard, faCalendar } from '@fortawesome/free-solid-svg-icons'
-import { getAllPollsService, getAllQuestionsFromPollService } from '../services/polls.services.js'
+import { getAllPollsService, getAllQuestionsFromPollService, getCsvPollService } from '../services/polls.services.js'
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from "../context/auth.context"
 import { useParams } from 'react-router-dom'
+import fileDownload from 'js-file-download'
 
 const ResultsQuestionsMap = {
   single: ResultChart,
@@ -75,11 +76,16 @@ export default function Results() {
     return <SpecificView question={question} />
   }
 
+  const getCSV = async (pollId) => {
+    const response = await getCsvPollService(pollId)
+    fileDownload(response.data, `Poll${pollId}.csv`)
+  }
+
   return (
     <>
       <div className="u-flex u-flex-column u-items-center u-justify-center">
-          <h4 className="font-alt">{poll.title}</h4>
-          <button className="bg-teal-600 text-white btn--sm">Export to CSV <FontAwesomeIcon icon={faFileCsv} /></button>
+        <h4 className="font-alt">{poll.title}</h4>
+        <button onClick={() => getCSV(poll._id)} className="bg-teal-600 text-white btn--sm">Export to CSV <FontAwesomeIcon icon={faFileCsv} /></button>
       </div>
       <div className="grid grid-cols-4-md grid-cols-2 u-gap-2 text-gray-700">
         <div className="u-flex u-flex-column u-items-center bg-white u-round-sm u-shadow-lg p-2">

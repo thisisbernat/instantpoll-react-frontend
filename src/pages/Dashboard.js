@@ -6,7 +6,6 @@ import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from "../context/auth.context"
 import Swal from 'sweetalert2'
 
-
 export default function Dashboard() {
   const { user } = useContext(AuthContext)
   const [polls, setPolls] = useState([])
@@ -108,12 +107,9 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* DASHBOARD HEADER */}
       <div className="u-flex u-flex-wrap u-justify-space-between-md u-items-center u-justify-center">
         <h4 className="font-alt uppercase">Dashboard</h4>
       </div>
-      {/* DASHBOARD HEADER */}
-
       <div className="grid grid-cols-3-md grid-cols-1 u-gap-2 mx-0-md mx-2">
         <div className="bg-white u-round-sm u-shadow-lg px-2 py-3 u-flex u-flex-column u-items-center u-gap-5">
           <div className="p-1 bg-pink-800 text-gray-000 u-center circle"><FontAwesomeIcon icon={faSquarePollHorizontal} /></div>
@@ -138,13 +134,10 @@ export default function Dashboard() {
         </Link>
       </div>
 
-      {/* MY POLLS HEADER */}
       <div className="u-flex u-flex-wrap u-justify-space-between-md u-items-center u-justify-center mt-0">
         <h4 className="font-alt mt-0">My polls</h4>
       </div>
-      {/* MY POLLS HEADER */}
 
-      {/* TABLE */}
       <div className="bg-white u-round-sm u-shadow-lg px-3 pt-2 pb-1 mt-0 table-container">
         <table className="table">
           <thead>

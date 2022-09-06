@@ -109,6 +109,28 @@ main {
   display: inline-block;
 }
 
+.button-link {
+  padding: 0.25rem 1rem;
+  font-size: 70%;
+  line-height: 2rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-align: center;
+  font-weight: inherit;
+  letter-spacing: .03rem;
+  text-transform: uppercase;
+  font-family: Montserrat;
+  min-width: 2rem;
+  user-select: none;
+  margin-bottom: 1rem;
+  outline: 0;
+  --btn-color: 248, 249, 250;
+  --btn-fg: 73, 80, 87;
+  --btn-border-color: 233, 236, 239;
+  margin: 0;
+}
+
 @media only screen and (max-width: 769px) {
   .top-grip {
     order: -1;
