@@ -33,7 +33,7 @@ export default function Results() {
     title: 'title',
     submissions: '1',
     views: '1',
-    createdAt: '2022-07-28T21:27:53.697Z'
+    createdAt: '2000-01-01T00:00:00'
   })
 
   const formatDate = (date) => new Intl.DateTimeFormat('en-GB').format(new Date(date))
