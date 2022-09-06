@@ -61,10 +61,12 @@ function App() {
 						</PageContainer>
 					} />
 
-					<Route exact path="/results/:id" element={
-						<PageContainer>
-							<Results />
-						</PageContainer>
+					<Route exact path="/results/:pollId" element={
+						<PrivateRoute>
+							<PageContainer>
+								<Results />
+							</PageContainer>
+						</PrivateRoute>
 					} />
 
 

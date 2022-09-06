@@ -9,7 +9,6 @@ import Swal from 'sweetalert2'
 
 export default function Dashboard() {
   const { user } = useContext(AuthContext)
-  console.log(user)
   const [polls, setPolls] = useState([])
   const [totalSubmissions, setTotalSubmissions] = useState(0)
   const [totalViews, setTotalViews] = useState(0)

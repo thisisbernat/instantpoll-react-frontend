@@ -22,6 +22,9 @@ export default function BarChart({ chartData }) {
 					drawBorder: true,
 					drawOnChartArea: true,
 					drawTicks: false
+				},
+				ticks: {
+					stepSize: 1
 				}
 			}
 		},

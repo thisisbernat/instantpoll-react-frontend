@@ -80,7 +80,7 @@ export default function Vote() {
         setQuestions([...sortedQuestions, { type: 'saving' }])
       })
       .catch(err => console.log(err))
-  }, [pollId])
+  }, [pollId, page])
 
   const nextStep = () => {
     if (currentIndex + 1 === questions.length) {
