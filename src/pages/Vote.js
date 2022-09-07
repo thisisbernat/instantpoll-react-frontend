@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAnalytics } from 'use-analytics'
-// import { AuthContext } from "../context/auth.context"
+import { AuthContext } from "../context/auth.context"
 import { addNewAnswerService, getAllQuestionsService, updatePatchPollService, getPollStatusService } from '../services/public.services.js'
 import Swal from 'sweetalert2'
 
@@ -39,6 +39,12 @@ const VoteQuestionsMap = {
 }
 
 export default function Vote() {
+  let userEmail = 'anonymous@instantpoll.local'
+  const { user } = useContext(AuthContext)
+  if (user) {
+    userEmail = user.email
+  }
+
   const { id } = useParams()
   const [pollId] = useState(id)
   let navigate = useNavigate()
@@ -106,7 +112,7 @@ export default function Vote() {
 
   const saveAnswer = async (currentAnswer) => {
     currentAnswer.parentQuestion = questions[currentIndex]._id
-    currentAnswer.replierEmail = 'anonymous@email.instantpoll'
+    currentAnswer.replierEmail = userEmail
     setAnswers([...answers, currentAnswer])
     nextStep()
   }
