@@ -165,7 +165,7 @@ export default function Dashboard() {
                   <td>{poll.isPublic ? 'Public' : 'Private'}</td>  
                   <td>{poll.views}</td>
                   <td>{poll.submissions}</td>
-                  <td>{Math.round((poll.submissions / poll.views)*100)+'%'}</td>
+                  <td>{poll.views ? Math.round((poll.submissions / poll.views)*100)+'%' : 'NA'}</td>
                   <td>{poll.isPublished ? <button onClick={() => closePoll(poll._id, index)} className="btn--sm outline text-gray-700 py-0" title="Close poll"><FontAwesomeIcon icon={faDoorClosed} /></button> : <button onClick={() => publishPoll(poll._id, index)} className="btn--sm outline btn-dark py-0" title="Publish poll"><FontAwesomeIcon icon={faPaperPlane} /></button>}</td>
                   <td><button onClick={() => deletePoll(poll._id, index)} className="btn--sm outline btn-primary py-0" title="Delete poll"><FontAwesomeIcon icon={faTrashCan} /></button></td>
                 </tr>
