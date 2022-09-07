@@ -24,7 +24,7 @@ const addNewViewService = (id, visitId) => {
 
 // ADD SUBMISSION TO POLL
 const addSubmissionPollService = (pollId, submissionId) => {
-	return service.post(`${URL}/polls/subs/${pollId}`, { submissionId })
+	return service.post(`${URL}/polls/submissions/${pollId}`, { submissionId })
 }
 
 export { addNewAnswerService, getPollStatusService, getAllQuestionsService, addNewViewService, addSubmissionPollService }
