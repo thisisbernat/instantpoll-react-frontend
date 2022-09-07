@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAnalytics } from 'use-analytics'
 // import { AuthContext } from "../context/auth.context"
-import { addNewAnswerService } from '../services/answers.services.js'
-import { getAllQuestionsService } from '../services/questions.services.js'
-import { updatePatchPollService, getPollStatusService } from '../services/polls.services.js'
+import { addNewAnswerService, getAllQuestionsService, updatePatchPollService, getPollStatusService } from '../services/public.services.js'
 import Swal from 'sweetalert2'
 
 import VoteList from '../components/vote/VoteList'
