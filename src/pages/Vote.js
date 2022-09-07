@@ -115,6 +115,7 @@ export default function Vote() {
   const saveAnswer = async (currentAnswer) => {
     currentAnswer.parentQuestion = questions[currentIndex]._id
     currentAnswer.replierEmail = userEmail
+    currentAnswer.submissionId = submissionId
     setAnswers([...answers, currentAnswer])
     nextStep()
   }
