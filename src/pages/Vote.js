@@ -117,12 +117,10 @@ export default function Vote() {
     nextStep()
   }
 
-
   return (
     <div className="grid grid-cols-5-md grid-cols-1 u-gap-2 mx-0-md mx-2">
       {showQuestion()}
       <Share />
-
     </div>
   )
 }

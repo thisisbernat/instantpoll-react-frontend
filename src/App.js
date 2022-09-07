@@ -68,8 +68,7 @@ function App() {
 							</PageContainer>
 						</PrivateRoute>
 					} />
-
-
+					
 				</Routes>
 			</MainContainer>
 			<Footer />
