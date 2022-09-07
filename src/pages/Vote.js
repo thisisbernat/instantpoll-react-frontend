@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAnalytics } from 'use-analytics'
 import { AuthContext } from "../context/auth.context"
-import { addNewAnswerService, getAllQuestionsService, updatePatchPollService, getPollStatusService } from '../services/public.services.js'
+import { addNewAnswerService, getAllQuestionsService, getPollStatusService, addSubmissionPollService } from '../services/public.services.js'
 import Swal from 'sweetalert2'
 
 import VoteList from '../components/vote/VoteList'
@@ -60,6 +60,7 @@ export default function Vote() {
   const [questions, setQuestions] = useState([sampleQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState([])
+  const [submissionId, setSubmissionId] = useState('')
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -67,7 +68,8 @@ export default function Vote() {
       ; (async (parameters) => {
         const pollStatus = await getPollStatusService(pollId)
         if (pollStatus.data.isPublished) {
-          page()
+          const {payload: {anonymousId: submissionId}} = await page()
+          setSubmissionId(submissionId)
         }
       })(pollId)
 
@@ -91,7 +93,7 @@ export default function Vote() {
       answers.forEach(answer => {
         addNewAnswerService(answer)
       })
-      updatePatchPollService(questions[0].parentPoll, { $inc: { submissions: 1 } })
+      addSubmissionPollService(questions[0].parentPoll, submissionId)
       Swal.fire({
         icon: 'success',
         html: 'Thank you for your participation<br /><strong>InstantPoll</strong>',

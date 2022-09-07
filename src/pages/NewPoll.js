@@ -237,7 +237,6 @@ export default function NewPoll() {
       title: pollTitle,
       isPublic: true,
       isPublished: isPublished,
-      submissions: 0,
       owner: user._id
     }
 

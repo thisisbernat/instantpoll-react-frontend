@@ -12,11 +12,6 @@ const getPollStatusService = (id) => {
   return service.get(`${URL}/polls/status/${id}`)
 }
 
-// UPDATE POLL (PARTIAL UPDATE)
-const updatePatchPollService = (id, updatedPoll) => {
-  return service.patch(`${URL}/polls/${id}`, updatedPoll)
-}
-
 // GET ALL QUESTIONS
 const getAllQuestionsService = (pollId) => {
   return service.get(`${URL}/questions/${pollId}`)
@@ -27,4 +22,9 @@ const addNewViewService = (id, visitId) => {
 	return service.post(`${URL}/polls/views/${id}`, { visitId })
 }
 
-export { addNewAnswerService, getPollStatusService, updatePatchPollService, getAllQuestionsService, addNewViewService }
+// ADD SUBMISSION TO POLL
+const addSubmissionPollService = (pollId, submissionId) => {
+	return service.post(`${URL}/polls/subs/${pollId}`, { submissionId })
+}
+
+export { addNewAnswerService, getPollStatusService, getAllQuestionsService, addNewViewService, addSubmissionPollService }
