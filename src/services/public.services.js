@@ -22,4 +22,9 @@ const getAllQuestionsService = (pollId) => {
   return service.get(`${URL}/questions/${pollId}`)
 }
 
-export { addNewAnswerService, getPollStatusService, updatePatchPollService, getAllQuestionsService }
+// ADD VIEW TO POLL
+const addNewViewService = (id, visitId) => {
+	return service.post(`${URL}/polls/views/${id}`, { visitId })
+}
+
+export { addNewAnswerService, getPollStatusService, updatePatchPollService, getAllQuestionsService, addNewViewService }

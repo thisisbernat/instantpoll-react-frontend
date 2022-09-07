@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom"
 import { AuthProviderWrapper } from "./context/auth.context"
 import { Analytics } from 'analytics'
 import { AnalyticsProvider } from "use-analytics"
-import { addNewViewService } from './services/polls.services.js'
+import { addNewViewService } from './services/public.services.js'
 
 const analytics = Analytics({
   app: 'instantpoll',
