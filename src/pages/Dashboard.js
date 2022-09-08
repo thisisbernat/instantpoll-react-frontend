@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquarePollHorizontal, faEye, faPersonChalkboard, faInfoCircle, faTrashCan, faPaperPlane,faUpRightFromSquare, faDoorClosed } from '@fortawesome/free-solid-svg-icons'
-import { Link } from "react-router-dom"
+import { faSquarePollHorizontal, faEye, faPersonChalkboard, faInfoCircle, faTrashCan, faPaperPlane, faDoorClosed } from '@fortawesome/free-solid-svg-icons'
+import { Link, useNavigate } from "react-router-dom"
 import { getAllPollsService, deletePollService, updatePatchPollService } from '../services/polls.services.js'
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from "../context/auth.context"
@@ -11,19 +11,19 @@ export default function Dashboard() {
   const [polls, setPolls] = useState([])
   const [totalSubmissions, setTotalSubmissions] = useState(0)
   const [totalViews, setTotalViews] = useState(0)
-
+  const navigate = useNavigate()
   const formatDate = (date) => new Intl.DateTimeFormat('en-GB').format(new Date(date))
 
-  useEffect(() => {    
+  useEffect(() => {
     getAllPollsService(user._id)
       .then(response => {
         setPolls(response.data)
-        const reduceSubmissions = response.data.reduce((acc, obj) => { 
-          return acc + obj.submissions 
+        const reduceSubmissions = response.data.reduce((acc, obj) => {
+          return acc + obj.submissions
         }, 0)
         setTotalSubmissions(reduceSubmissions)
-        const reduceViews = response.data.reduce((acc, obj) => { 
-          return acc + obj.views 
+        const reduceViews = response.data.reduce((acc, obj) => {
+          return acc + obj.views
         }, 0)
         setTotalViews(reduceViews)
       })
@@ -143,31 +143,25 @@ export default function Dashboard() {
           <thead>
             <tr>
               <th>Name</th>
-              <th><abbr title="Results">Results</abbr></th>
-              <th><abbr title="Creation date">Creation</abbr></th>
-              <th><abbr title="Published/Saved">Status</abbr></th>  
-              <th><abbr title="Public/Private">Visibility</abbr></th>                      
-              <th><abbr title="Number of views">Views</abbr></th>
-              <th><abbr title="Submissions">Sub.</abbr></th>
-              <th><abbr title="Submission rate">SR</abbr></th>
-              <th>Actions</th>
-              <th>Del</th>
+              <th>Creation</th>
+              <th>Status</th>
+              <th>Vote</th>
+              <th>Report</th>
+              <th>Publish</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {polls.map((poll, index) => {
               return (
-                <tr key={index}>                  
-                  <th><Link to={`/poll/${poll._id}`}>{poll.title} <FontAwesomeIcon icon={faUpRightFromSquare} /></Link></th>
-                  <td><Link to={`/results/${poll._id}`}>link</Link></td>
+                <tr key={index}>
+                  <th><span className="uppercase">{poll.title}</span></th>
                   <td>{formatDate(poll.createdAt)}</td>
-                  <td>{poll.isPublished ? 'Published' : 'Saved'}</td>                  
-                  <td>{poll.isPublic ? 'Public' : 'Private'}</td>  
-                  <td>{poll.views}</td>
-                  <td>{poll.submissions}</td>
-                  <td>{poll.views ? Math.round((poll.submissions / poll.views)*100)+'%' : 'NA'}</td>
-                  <td>{poll.isPublished ? <button onClick={() => closePoll(poll._id, index)} className="btn--sm outline text-gray-700 py-0" title="Close poll"><FontAwesomeIcon icon={faDoorClosed} /></button> : <button onClick={() => publishPoll(poll._id, index)} className="btn--sm outline btn-dark py-0" title="Publish poll"><FontAwesomeIcon icon={faPaperPlane} /></button>}</td>
-                  <td><button onClick={() => deletePoll(poll._id, index)} className="btn--sm outline btn-primary py-0" title="Delete poll"><FontAwesomeIcon icon={faTrashCan} /></button></td>
+                  <td>{poll.isPublished ? 'Published' : 'Closed'}</td>
+                  <td><h4 className="tooltip tooltip--bottom dashboard-btn" data-tooltip="Vote poll"><FontAwesomeIcon onClick={() => navigate(`/poll/${poll._id}`)} icon={faPersonChalkboard} className="pointer" /></h4></td>
+                  <td><h4 className="tooltip tooltip--bottom dashboard-btn" data-tooltip="View report"><FontAwesomeIcon onClick={() => navigate(`/results/${poll._id}`)} icon={faSquarePollHorizontal} className="pointer" /></h4></td>
+                  <td>{poll.isPublished ? <h4 className="tooltip tooltip--bottom dashboard-btn" data-tooltip="Unpublish poll"><FontAwesomeIcon onClick={() => closePoll(poll._id, index)} icon={faDoorClosed} className="pointer" /></h4> : <h4 className="tooltip tooltip--bottom dashboard-btn" data-tooltip="Publish poll"><FontAwesomeIcon onClick={() => publishPoll(poll._id, index)} icon={faPaperPlane} className="pointer" /></h4>}</td>
+                  <td><h4 className="tooltip tooltip--bottom dashboard-btn" data-tooltip="Delete poll"><FontAwesomeIcon onClick={() => deletePoll(poll._id, index)} icon={faTrashCan} className="pointer" /></h4></td>
                 </tr>
               )
             })}
