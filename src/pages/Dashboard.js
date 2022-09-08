@@ -38,7 +38,7 @@ export default function Dashboard() {
       confirmButtonText: `Publish`,
       showCancelButton: true,
       customClass: {
-        cancelButton: 'btn-dark btn--sm',
+        cancelButton: 'btn--sm',
         confirmButton: 'bg-teal-600 text-white btn--sm'
       }
     }
@@ -63,7 +63,7 @@ export default function Dashboard() {
       showCancelButton: true,
       showCloseButton: true,
       customClass: {
-        cancelButton: 'btn-dark btn--sm',
+        cancelButton: 'btn--sm',
         confirmButton: 'bg-teal-600 text-white btn--sm'
       }
     }
@@ -89,7 +89,7 @@ export default function Dashboard() {
       showCancelButton: true,
       showCloseButton: true,
       customClass: {
-        cancelButton: 'btn-dark btn--sm',
+        cancelButton: 'btn--sm',
         confirmButton: 'bg-teal-600 text-white btn--sm'
       }
     }
