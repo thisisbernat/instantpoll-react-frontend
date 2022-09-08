@@ -13,7 +13,6 @@ import Vote from './pages/Vote'
 import Results from './pages/Results'
 import PrivateRoute from './components/PrivateRoute'
 import AnonRoute from './components/AnonRoute'
-import Dnd from './pages/dnd'
 
 function App() {
 	return (
@@ -33,10 +32,6 @@ function App() {
 						<AnonRoute>
 							<Login />
 						</AnonRoute>
-					} />
-
-					<Route exact path="/dnd" element={
-						<Dnd />
 					} />
 
 					<Route exact path="/new" element={
