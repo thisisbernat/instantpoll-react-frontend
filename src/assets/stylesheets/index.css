@@ -131,6 +131,14 @@ main {
   margin: 0;
 }
 
+.dashboard-btn {
+  color: #343A40
+}
+
+.dashboard-btn:hover {
+  color: #047481
+}
+
 @media only screen and (max-width: 769px) {
   .top-grip {
     order: -1;
