@@ -66,10 +66,30 @@ export default function Vote() {
     window.scrollTo(0, 0)
 
       ; (async (parameters) => {
-        const pollStatus = await getPollStatusService(pollId)
-        if (pollStatus.data.isPublished) {
-          const {payload: {anonymousId: submissionId}} = await page()
-          setSubmissionId(submissionId)
+        try {
+          const pollStatus = await getPollStatusService(pollId)
+          let anonymousId = ''
+          if (pollStatus.data.isPublished) {
+            const { payload } = await page()
+            anonymousId = payload.anonymousId
+            setSubmissionId(anonymousId)
+          }
+          if (pollStatus.data.submissionsIds.includes(anonymousId)) {
+            const response = await Swal.fire({
+              icon: 'warning',
+              html: "We are sorry.<br /> It looks like you already participated in this poll.",
+              customClass: {
+                confirmButton: 'text-white bg-teal-600'
+              },
+              allowOutsideClick: false,
+              allowEscapeKey: false
+            })
+            if (response.isConfirmed) {
+              navigate("/")
+            }
+          }
+        } catch (err) {
+          console.log(err)
         }
       })(pollId)
 
