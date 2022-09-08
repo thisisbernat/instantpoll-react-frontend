@@ -2,8 +2,8 @@
 #### _Because the only stupid question is the one that is never asked_
 InstantPoll is an application to quickly **create**, **configure**, and **share** polls and surveys. It includes different kind of customizable questions (single and multiple choice, ranking, rating, open questions, etc.). After the creation, the polls can be shared and users can submit their answers.
 
-**The application is deployed in Heroku**
-https://instantpoll.herokuapp.com/
+**The application is deployed in Vercel**
+https://instantpoll.vercel.app
 
 **Backend repository**
 https://github.com/thisisbernat/instantpoll-express-backend
