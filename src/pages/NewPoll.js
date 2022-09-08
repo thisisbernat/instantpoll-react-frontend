@@ -298,8 +298,8 @@ export default function NewPoll() {
         </h4>
         <div className="u-flex u-gap-1">
           <button onClick={pollOptionsMenu} className="outline text-indigo-800 btn--sm hidden">Poll options <FontAwesomeIcon icon={faGears} /></button>
-          <button onClick={() => savePoll(false)} className="outline text-indigo-800 btn--sm">Save <FontAwesomeIcon icon={faFloppyDisk} /></button>
-          <button onClick={() => savePoll(true)} className="bg-indigo-800 text-white btn--sm">Publish poll <FontAwesomeIcon icon={faPaperPlane} /></button>
+          <button onClick={() => savePoll(false)} className="outline text-teal-600 btn--sm">Save <FontAwesomeIcon icon={faFloppyDisk} /></button>
+          <button onClick={() => savePoll(true)} className="bg-teal-600 text-white btn--sm">Publish poll <FontAwesomeIcon icon={faPaperPlane} /></button>
         </div>
       </div>
       {questions.map((question, index) => {
