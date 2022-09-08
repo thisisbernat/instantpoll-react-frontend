@@ -77,7 +77,7 @@ export default function NewEmail(props) {
       <form onSubmit={saveQuestion}>
         <button type="submit" className="text-white bg-teal-600 btn--sm u-pull-right mr-1">Save</button>
       </form>
-      <button className="outline btn-primary btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
+      <button className="outline text-gray-700 btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
     </div>
   )
 }

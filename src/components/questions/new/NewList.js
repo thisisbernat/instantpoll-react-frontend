@@ -62,7 +62,6 @@ export default function NewList(props) {
 
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-3 pt-2 pb-1">
-            {/* Question header */}
             <div className="u-flex u-flex-column u-justify-center u-relative pb-1">
                 <FontAwesomeIcon className="text-gray-600 grip top-grip" icon={faGrip} />
                 <div className="u-absolute-md u-left-0 u-right-0">
@@ -84,7 +83,6 @@ export default function NewList(props) {
                     <font className="dotted">{title ? `${title}${isCompulsory ? '*' : ''}` : <>Edit your title here!{isCompulsory && '*'}</>}</font> {<FontAwesomeIcon className={showPen ? "text-gray-600 text-sm" : "text-gray-600 text-sm hidden"} icon={faPen} />}
                 </div>
             </div>
-            {/* Question header */}
             <form onSubmit={saveQuestion}>
                 <div className="u-flex u-flex-column u-items-center">
                     <label className="mb-0 text-sm">Set how many options the user should enter</label>
@@ -92,8 +90,7 @@ export default function NewList(props) {
                 </div>
                 <button className="text-white bg-indigo-900 btn--sm u-pull-right mr-1">Save</button>
             </form>
-            <button className="outline btn-primary btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
-            {/* Question body */}
+            <button className="outline text-gray-700 btn--sm u-pull-right mr-1" onClick={() => deleteQuestion(index)}><FontAwesomeIcon icon={faTrashCan} /></button>
         </div>
     )
 }
