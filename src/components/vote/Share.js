@@ -4,9 +4,6 @@ import { faTwitterSquare, faFacebookSquare, faWhatsappSquare, faLinkedin } from 
 import Swal from 'sweetalert2'
 import { useLocation } from 'react-router-dom'
 
-const URL = window.location.href
-console.log('Vanilla JS: ',window.location)
-
 export default function Share(props) {
 
     const showQR = () => {
@@ -16,8 +13,8 @@ export default function Share(props) {
         })
     }
 
-    const location = useLocation()
-    console.log('React hook: ', location)
+    const {pathname} = useLocation()
+    const URL = 'https://instantpoll.vercel.app' + pathname
 
     return (
         <div className="bg-white u-round-sm u-shadow-lg px-3 py-8-md py-3">
